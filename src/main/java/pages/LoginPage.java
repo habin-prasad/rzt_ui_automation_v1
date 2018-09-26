@@ -23,7 +23,7 @@ public class LoginPage {
     @FindBy(xpath = "//input[@id='identifierId']")
     private WebElement userName;
 
-    @FindBy(xpath = "//div[@id='identifierNext']")
+    @FindBy(xpath = "//span[contains(.,'Next')]")
     private WebElement nextButton;
 
     @FindBy(xpath = "//input[@name='password']")

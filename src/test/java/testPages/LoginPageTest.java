@@ -23,7 +23,7 @@ public class LoginPageTest extends BaseClass {
 
     }
     public void validateTitle(String title){
-        validations.validateTitle(title);
+        validations.validateTitle(title,driver.getTitle());
     }
 
     public void login(String uname, String upass){

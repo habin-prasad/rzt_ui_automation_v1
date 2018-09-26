@@ -2,9 +2,8 @@ package tests;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Test;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.*;
 import testPages.LoginPageTest;
 
 import java.util.concurrent.TimeUnit;
@@ -21,10 +20,12 @@ public class RegressionTests {
     private String baseUrl;
 
 
-    @BeforeSuite
+    @BeforeClass
     public void setUp(){
+        String directoryName = System.getProperty("user.dir") + "/drivers/";
+        System.setProperty("webdriver.chrome.driver",directoryName+"chromedriver");
         driver = new ChromeDriver();
-        baseUrl = "";
+        baseUrl = "https://bbqanew.razorthink.net/";
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.get(baseUrl);
@@ -33,11 +34,11 @@ public class RegressionTests {
     @Test(priority = 1)
     public void loginPageTest(){
         LoginPageTest loginPageTest = new LoginPageTest(driver);
-        loginPageTest.validateTitle("Razorthink AI");
-        loginPageTest.login("habin.prasad@razorthink.com","@ssh0ole");
+        loginPageTest.validateTitle("Razorthink AIs");
+        loginPageTest.login("","");
     }
 
-    @AfterSuite
+    @AfterClass
     public void tearDown(){
         driver.close();
     }

@@ -20,7 +20,8 @@ public class Validations {
         softAssert = new SoftAssert();
     }
 
-    public void validateTitle(String title){
-         softAssert.assertEquals(title,driver.getTitle());
+    public void validateTitle(String expected,String actual){
+//        System.out.println(expected +":"+actual);
+         softAssert.assertEquals(actual,expected);
     }
 }

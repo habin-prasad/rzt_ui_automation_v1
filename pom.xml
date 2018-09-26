@@ -8,10 +8,10 @@
     <artifactId>ui_automation</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
-        <selenium.version>3.7.1</selenium.version>
+        <selenium.version>3.14.0</selenium.version>
         <testng.version>6.14.3</testng.version>
-        <logger.version>2.10.0</logger.version>
-        <surefire.version>2.22.0</surefire.version>
+        <!--<logger.version>2.10.0</logger.version>-->
+        <surefire.version>2.19.1</surefire.version>
         <log4j.version>2.11.1</log4j.version>
         <poi.version>3.17</poi.version>
     </properties>
@@ -85,11 +85,11 @@
             <artifactId>selenium-ie-driver</artifactId>
             <version>${selenium.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>${logger.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.apache.logging.log4j</groupId>-->
+            <!--<artifactId>log4j-api</artifactId>-->
+            <!--<version>${logger.version}</version>-->
+        <!--</dependency>-->
         <!-- https://mvnrepository.com/artifact/org.apache.directory.studio/org.apache.commons.io -->
         <dependency>
             <groupId>org.apache.directory.studio</groupId>

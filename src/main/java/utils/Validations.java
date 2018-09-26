@@ -1,5 +1,6 @@
 package utils;
 
+import base.TestBase;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
@@ -11,7 +12,7 @@ import org.testng.asserts.SoftAssert;
  */
 
 
-public class Validations {
+public class Validations extends TestBase {
     WebDriver driver;
     SoftAssert softAssert;
 
@@ -22,6 +23,6 @@ public class Validations {
 
     public void validateTitle(String expected,String actual){
 //        System.out.println(expected +":"+actual);
-         softAssert.assertEquals(actual,expected);
+         verifyEquals(actual,expected);
     }
 }

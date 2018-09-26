@@ -1,6 +1,7 @@
 package testPages;
 
 import base.BaseClass;
+import base.TestBase;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeSuite;
 import pages.LoginPage;
@@ -13,7 +14,7 @@ import utils.Validations;
  */
 
 
-public class LoginPageTest extends BaseClass {
+public class LoginPageTest extends BaseClass  {
     private WebDriver driver;
     private LoginPage loginPage;
 

@@ -5,8 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import javax.xml.ws.WebEndpoint;
-
 /**
  * @author: habin,
  * created on: 26/09/18 : 4:40 PM

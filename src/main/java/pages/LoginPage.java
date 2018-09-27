@@ -12,12 +12,13 @@ import utils.WaitEx;
  * created on: 25/09/18 : 5:56 PM
  * To change this template use File | Settings | File and Code Templates.
  */
+
 public class LoginPage {
 
     private WebDriver driver;
     private WaitEx waitEx;
 
-    @FindBy(xpath = "//button[contains(.,'Sign in with Razorthink')]")
+    @FindBy(xpath = "//button[contains(.,'Sign in with Google')]")
     private WebElement ldapLoginButton;
 
     @FindBy(xpath = "//input[@id='identifierId']")
@@ -48,7 +49,6 @@ public class LoginPage {
         userPassword.clear();
         userPassword.sendKeys(pwd);
         nextButton.click();
-
         return this.driver;
     }
 

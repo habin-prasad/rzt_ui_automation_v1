@@ -8,13 +8,16 @@
     <artifactId>ui_automation</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <selenium.version>3.14.0</selenium.version>
         <testng.version>6.14.3</testng.version>
-        <!--<logger.version>2.10.0</logger.version>-->
         <surefire.version>2.19.1</surefire.version>
         <log4j.version>2.11.1</log4j.version>
         <poi.version>3.17</poi.version>
+        <java.version>1.8</java.version>
+
     </properties>
+
 
     <build>
         <plugins>
@@ -22,8 +25,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
 
@@ -41,6 +44,17 @@
 
 
         </plugins>
+
+        <resources>
+            <resource>
+                <directory>${basedir}/profiles/${build.profile.id}</directory>
+                <targetPath>${basedir}/target/classes/</targetPath>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
     </build>
 
     <dependencies>
@@ -85,11 +99,7 @@
             <artifactId>selenium-ie-driver</artifactId>
             <version>${selenium.version}</version>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>org.apache.logging.log4j</groupId>-->
-            <!--<artifactId>log4j-api</artifactId>-->
-            <!--<version>${logger.version}</version>-->
-        <!--</dependency>-->
+
         <!-- https://mvnrepository.com/artifact/org.apache.directory.studio/org.apache.commons.io -->
         <dependency>
             <groupId>org.apache.directory.studio</groupId>

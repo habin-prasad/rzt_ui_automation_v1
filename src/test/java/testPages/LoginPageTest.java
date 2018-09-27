@@ -1,9 +1,7 @@
 package testPages;
 
 import base.BaseClass;
-import base.TestBase;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.BeforeSuite;
 import pages.LoginPage;
 import utils.Validations;
 

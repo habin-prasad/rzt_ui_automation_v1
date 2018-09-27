@@ -1,5 +1,7 @@
 package base;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.IInvokedMethod;
 import org.testng.ITestResult;
 import org.testng.Reporter;
@@ -16,6 +18,8 @@ import java.util.List;
 
 public class CustomTestListener extends TestListenerAdapter {
 
+    private static final Logger log = LogManager.getLogger(CustomTestListener.class.getName());
+
     @Override
     public void afterInvocation(IInvokedMethod method, ITestResult testResult) {
         Reporter.setCurrentTestResult(testResult);
@@ -31,10 +35,13 @@ public class CustomTestListener extends TestListenerAdapter {
 
                 if (size == 1) {
                     testResult.setThrowable((Throwable) verificationFailures.get(0));
+                    log.error("Failure encountered: " + verificationFailures.get(0).toString());
                 } else {
                     StringBuffer failureMessage = new StringBuffer("Multiple Failure (").append(size).append("):nn");
+                    log.error("Multiple Failure (" + size + "):nn");
                     for (int i = 0; i < size - 1; i++) {
                         failureMessage.append("Failure ").append(i + 1).append(" of ").append(size).append(":nn");
+                        log.error("Failure " + i + 1 + " of " + size + ":nn");
                         Throwable t = (Throwable) verificationFailures.get(i);
                         String fullStackTrace = Utils.stackTrace(t, false)[1];
                         failureMessage.append(fullStackTrace).append(":nn");
@@ -42,6 +49,7 @@ public class CustomTestListener extends TestListenerAdapter {
 
                     Throwable last = (Throwable) verificationFailures.get(size - 1);
                     failureMessage.append("Failure ").append(size).append(" of ").append(size).append(":nn");
+                    log.error("Failure " + size + " of " + size + ":nn");
                     failureMessage.append(last.toString());
 
                     Throwable merged = new Throwable(failureMessage.toString());
@@ -57,6 +65,6 @@ public class CustomTestListener extends TestListenerAdapter {
 
     @Override
     public void onTestSuccess(ITestResult result) {
-
+        log.info("Successfully Completed ");
     }
 }

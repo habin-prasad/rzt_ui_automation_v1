@@ -18,7 +18,7 @@ public class ReadProperties {
 
     public String getPropertyValue(String propKey) {
         try {
-            String directoryName = System.getProperty("user.dir") + "/config/";
+            String directoryName = System.getProperty("user.dir") + "/resources_config/";
             Properties properties = new Properties();
             String propertyFileName = "application.properties";
             inputStream = getClass().getClassLoader().getResourceAsStream(propertyFileName);

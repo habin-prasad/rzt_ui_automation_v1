@@ -30,9 +30,9 @@ public class RegressionTests {
         String directoryName = System.getProperty("user.dir") + "/drivers/";
         System.setProperty("webdriver.chrome.driver", directoryName + "chromedriver");
         driver = new ChromeDriver();
-        baseUrl=readProperties.getPropertyValue("stg");
+//        baseUrl=readProperties.getPropertyValue("stg");
 //        baseUrl = "https://bbstaging-in.razorthink.net";
-//        baseUrl = "https://bbqanew.razorthink.net";
+        baseUrl = "https://bbqanew.razorthink.net";
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.get(baseUrl);

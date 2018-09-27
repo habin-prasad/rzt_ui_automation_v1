@@ -12,22 +12,23 @@ import utils.Validations;
  */
 
 
-public class LoginPageTest extends BaseClass  {
+public class LoginPageTest extends BaseClass {
     private WebDriver driver;
     private LoginPage loginPage;
 
-    public LoginPageTest(WebDriver driver){
+    public LoginPageTest(WebDriver driver) {
         this.driver = driver;
         validations = new Validations(this.driver);
 
     }
-    public void validateTitle(String title){
-        validations.validateTitle(title,driver.getTitle());
+
+    public void validateTitle(String title) {
+        validations.validateTitle(title, driver.getTitle());
     }
 
-    public void login(String uname, String upass){
+    public void login(String uname, String upass) {
         loginPage = new LoginPage(driver);
-        loginPage.login(uname,upass);
+        loginPage.login(uname, upass);
     }
 
 

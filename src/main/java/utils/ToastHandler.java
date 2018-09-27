@@ -18,18 +18,19 @@ public class ToastHandler {
     @FindBy(xpath = "//div[@type='error']//span[contains(.,'OK')]")
     private WebElement errorToastOKButton;
 
-    public ToastHandler(WebDriver driver){
+    public ToastHandler(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void acceptToast(String type){
-        if(type.equalsIgnoreCase("error"))
+    public void acceptToast(String type) {
+        if (type.equalsIgnoreCase("error"))
             errorToastOKButton.click();
-        else if(type.equalsIgnoreCase("warning")){}
-        else if(type.equalsIgnoreCase("accept")){}
+        else if (type.equalsIgnoreCase("warning")) {
+        } else if (type.equalsIgnoreCase("accept")) {
+        }
     }
 
-    public boolean isToastPresent(By by){
+    public boolean isToastPresent(By by) {
 
         try {
             driver.findElements(by);

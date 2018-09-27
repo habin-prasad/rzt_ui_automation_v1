@@ -1,7 +1,5 @@
 package utils;
 
-import org.apache.commons.io.FileUtils;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,29 +12,29 @@ import java.util.Properties;
  */
 
 
-public class ReadProperties  {
+public class ReadProperties {
     private InputStream inputStream = null;
     private String propValue = "";
 
     public String getPropertyValue(String propKey) {
         try {
-            String directoryName = System.getProperty("user.dir") +"/config/";
+            String directoryName = System.getProperty("user.dir") + "/config/";
             Properties properties = new Properties();
-            String propertyFileName ="application.properties";
+            String propertyFileName = "application.properties";
             inputStream = getClass().getClassLoader().getResourceAsStream(propertyFileName);
 //            inputStream = FileUtils.class.getResourceAsStream(propertyFileName);
 
-            if(inputStream != null){
+            if (inputStream != null) {
                 properties.load(inputStream);
-            }else {
-                throw new FileNotFoundException("property file "+propertyFileName+" not found at the location");
+            } else {
+                throw new FileNotFoundException("property file " + propertyFileName + " not found at the location");
             }
 
             propValue = properties.getProperty(propKey);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 inputStream.close();
             } catch (IOException e) {

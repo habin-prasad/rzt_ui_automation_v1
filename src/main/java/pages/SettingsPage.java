@@ -45,42 +45,42 @@ public class SettingsPage extends LeftPanel {
     public SettingsPage(WebDriver driver) {
         super(driver);
         goSettingsPage();
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
-    public void clickUsersTab(){
+    public void clickUsersTab() {
         usersTab.click();
     }
 
-    public void clickRolesTab(){
+    public void clickRolesTab() {
         rolesTab.click();
     }
 
-    public void clickLicenseTab(){
+    public void clickLicenseTab() {
         licenseTab.click();
     }
 
-    public void clickAuditTab(){
+    public void clickAuditTab() {
         auditTab.click();
     }
 
-    public void clickEngineTab(){
+    public void clickEngineTab() {
         engineTab.click();
     }
 
-    public void clickUpdateTab(){
+    public void clickUpdateTab() {
         updateTab.click();
     }
 
-    public void clickWorkspace(){
+    public void clickWorkspace() {
         workspaceTab.click();
     }
 
-    public void clickOpenRequests(){
+    public void clickOpenRequests() {
         openRequestsTab.click();
     }
 
-    public void clickLibrary(){
+    public void clickLibrary() {
         libraryTab.click();
     }
 

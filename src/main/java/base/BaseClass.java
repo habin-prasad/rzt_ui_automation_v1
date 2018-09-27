@@ -8,9 +8,9 @@ import utils.*;
  * To change this template use File | Settings | File and Code Templates.
  */
 public class BaseClass {
-protected Validations validations;
-protected ExcelUtility excelUtility;
-protected MouseActivity mouseActivity;
-protected WaitEx waitEx;
-protected Screenshots screenshots;
+    protected Validations validations;
+    protected ExcelUtility excelUtility;
+    protected MouseActivity mouseActivity;
+    protected WaitEx waitEx;
+    protected Screenshots screenshots;
 }

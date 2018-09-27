@@ -36,30 +36,30 @@ public class LeftPanel {
     @FindBy(xpath = "//img")
     private WebElement rztIcon;
 
-    public LeftPanel(WebDriver driver){
+    public LeftPanel(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(this.driver,this);
+        PageFactory.initElements(this.driver, this);
 
     }
 
-    public void logout(){
+    public void logout() {
         profileIcon.click();
         logoutButton.click();
     }
 
-    public void goHomePage(){
+    public void goHomePage() {
         rztIcon.click();
     }
 
-    public void openJupyter(){
+    public void openJupyter() {
         jupyterIcon.click();
     }
 
-    public void goSettingsPage(){
+    public void goSettingsPage() {
         settingsIcon.click();
     }
 
-    public void getSupport(){
+    public void getSupport() {
         supportIcon.click();
     }
 

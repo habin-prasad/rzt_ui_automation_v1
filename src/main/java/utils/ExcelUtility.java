@@ -35,8 +35,7 @@ public class ExcelUtility {
             ExcelWSheet = ExcelWBook.getSheet(sheetName);
         } catch (Exception e) {
             throw (e);
-        }
-        finally {
+        } finally {
             ExcelFile.close();
         }
     }
@@ -67,8 +66,8 @@ public class ExcelUtility {
             // Declare multi-dimensional array to capture the data from the table
             testData = new String[endRow - startRow + 1][endCol - startCol + 1];
 
-            for (int i=startRow; i<endRow+1; i++) {
-                for (int j=startCol; j<endCol+1; j++) {
+            for (int i = startRow; i < endRow + 1; i++) {
+                for (int j = startCol; j < endCol + 1; j++) {
                     // testData[i-startRow][j-startCol] = ExcelWSheet.getRow(i).getCell(j).getStringCellValue();
                     // For every column in every row, fetch the value of the cell
                     Cell cell = ExcelWSheet.getRow(i).getCell(j);

@@ -19,29 +19,28 @@ public class CustomTestListener extends TestListenerAdapter {
     @Override
     public void afterInvocation(IInvokedMethod method, ITestResult testResult) {
         Reporter.setCurrentTestResult(testResult);
-        if(method.isTestMethod()){
+        if (method.isTestMethod()) {
             List verificationFailures = TestBase.getVerificationFailures();
-            if(verificationFailures.size() > 0){
+            if (verificationFailures.size() > 0) {
                 testResult.setStatus(ITestResult.FAILURE);
 
-                if(testResult.getThrowable() != null){
+                if (testResult.getThrowable() != null) {
                     verificationFailures.add(testResult.getThrowable());
                 }
                 int size = verificationFailures.size();
 
-                if(size ==1){
+                if (size == 1) {
                     testResult.setThrowable((Throwable) verificationFailures.get(0));
-                }
-                else{
+                } else {
                     StringBuffer failureMessage = new StringBuffer("Multiple Failure (").append(size).append("):nn");
-                    for(int i =0; i< size-1;i++){
-                        failureMessage.append("Failure ").append(i+1).append(" of ").append(size).append(":nn");
+                    for (int i = 0; i < size - 1; i++) {
+                        failureMessage.append("Failure ").append(i + 1).append(" of ").append(size).append(":nn");
                         Throwable t = (Throwable) verificationFailures.get(i);
-                        String fullStackTrace = Utils.stackTrace(t,false)[1];
+                        String fullStackTrace = Utils.stackTrace(t, false)[1];
                         failureMessage.append(fullStackTrace).append(":nn");
                     }
 
-                    Throwable last = (Throwable) verificationFailures.get(size-1);
+                    Throwable last = (Throwable) verificationFailures.get(size - 1);
                     failureMessage.append("Failure ").append(size).append(" of ").append(size).append(":nn");
                     failureMessage.append(last.toString());
 
@@ -53,5 +52,11 @@ public class CustomTestListener extends TestListenerAdapter {
 
             }
         }
+    }
+
+
+    @Override
+    public void onTestSuccess(ITestResult result) {
+
     }
 }

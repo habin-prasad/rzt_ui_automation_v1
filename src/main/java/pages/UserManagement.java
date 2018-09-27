@@ -12,7 +12,6 @@ import org.openqa.selenium.WebDriver;
 public class UserManagement extends SettingsPage {
 
 
-
     public UserManagement(WebDriver driver) {
         super(driver);
     }

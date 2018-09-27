@@ -1,8 +1,6 @@
 package base;
 
-import org.testng.IInvokedMethod;
-import org.testng.IInvokedMethodListener;
-import org.testng.ITestResult;
+import org.testng.*;
 
 /**
  * @author: habin,
@@ -11,7 +9,7 @@ import org.testng.ITestResult;
  */
 
 
-public class TestListenerAdapter implements IInvokedMethodListener {
+public class TestListenerAdapter implements IInvokedMethodListener, ITestListener {
 
     @Override
     public void beforeInvocation(IInvokedMethod method, ITestResult testResult) {
@@ -20,6 +18,41 @@ public class TestListenerAdapter implements IInvokedMethodListener {
 
     @Override
     public void afterInvocation(IInvokedMethod method, ITestResult testResult) {
+
+    }
+
+    @Override
+    public void onTestStart(ITestResult result) {
+
+    }
+
+    @Override
+    public void onTestSuccess(ITestResult result) {
+
+    }
+
+    @Override
+    public void onTestFailure(ITestResult result) {
+
+    }
+
+    @Override
+    public void onTestSkipped(ITestResult result) {
+
+    }
+
+    @Override
+    public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+
+    }
+
+    @Override
+    public void onStart(ITestContext context) {
+
+    }
+
+    @Override
+    public void onFinish(ITestContext context) {
 
     }
 }

@@ -1,19 +1,19 @@
 package tests;
 
 import base.CustomTestListener;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import testPages.LoginPageTest;
+import utils.BrokenLinksVerify;
 import utils.ReadProperties;
+import utils.WaitEx;
 
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author: habin,
+ * author: habin,
  * created on: 25/09/18 : 6:48 PM
  * To change this template use File | Settings | File and Code Templates.
  */
@@ -22,6 +22,8 @@ public class RegressionTests {
     private WebDriver driver;
     private String baseUrl;
     private ReadProperties readProperties;
+    private BrokenLinksVerify brokenLinksVerify;
+    private WaitEx waitEx;
 
 
     @BeforeClass
@@ -39,11 +41,24 @@ public class RegressionTests {
 
     }
 
+    @BeforeMethod()
+    public void waitLoader() {
+//        waitEx.waitElement(By.xpath("//img[@alt='Big Brain']"),4000);
+    }
+
     @Test(priority = 1)
     public void loginPageTest() {
         LoginPageTest loginPageTest = new LoginPageTest(driver);
-        loginPageTest.validateTitle("Razorthink AI");
+        loginPageTest.validateTitle("Login - Big Brain 3.0");
         loginPageTest.login("","");
+    }
+
+    @AfterMethod
+    public void postEachTest() {
+        waitEx = new WaitEx(driver);
+        brokenLinksVerify = new BrokenLinksVerify(driver);
+        waitEx.waitElement(By.xpath("//img[@alt='Big Brain']"), 4000);
+        brokenLinksVerify.testBrokenLinks();
     }
 
     @AfterClass

@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 import testPages.LoginPageTest;
+import testPages.SettingsPageTest;
 import utils.BrokenLinksVerify;
 import utils.ReadProperties;
 import utils.WaitEx;
@@ -49,8 +50,13 @@ public class RegressionTests {
     @Test(priority = 1)
     public void loginPageTest() {
         LoginPageTest loginPageTest = new LoginPageTest(driver);
-        loginPageTest.validateTitle("Login - Big Brain 3.0");
+        loginPageTest.validateTitle("Razorthink AI");
         loginPageTest.login("","");
+    }
+
+    @Test(priority = 2)
+    public void settingsPageTest() {
+        SettingsPageTest settingsPageTest = new SettingsPageTest(driver);
     }
 
     @AfterMethod
@@ -63,6 +69,6 @@ public class RegressionTests {
 
     @AfterClass
     public void tearDown() {
-        driver.close();
+//        driver.close();
     }
 }

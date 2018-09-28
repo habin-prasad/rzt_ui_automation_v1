@@ -11,4 +11,7 @@
         <listener class-name="base.CustomTestListener"/>
     </listeners>
 
+    <parameter name="baseUrl" value="https://bbqanew.razorthink.net"/>
+    <parameter name="webDriver" value="chrome"/>
+
 </suite>

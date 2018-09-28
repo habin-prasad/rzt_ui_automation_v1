@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import utils.WaitEx;
 
 /**
- * @author: habin,
+ * author: habin,
  * created on: 25/09/18 : 5:56 PM
  * To change this template use File | Settings | File and Code Templates.
  */
@@ -30,8 +30,6 @@ public class LoginPage {
     @FindBy(xpath = "//input[@name='password']")
     private WebElement userPassword;
 
-//    @FindBy(xpath = "//div[@id='identifierNext']")
-//    private WebElement nextButton;
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -42,14 +40,22 @@ public class LoginPage {
     public WebDriver login(String uname, String pwd) {
         ldapLoginButton.click();
         waitEx.waitElement(By.xpath("//input[@id='identifierId']"), 4000);
-        userName.clear();
-        userName.sendKeys(uname);
-        nextButton.click();
+        enterUserName(uname);
         waitEx.waitElement(By.xpath("//input[@name='password']"), 4000);
-        userPassword.clear();
-        userPassword.sendKeys(pwd);
-        nextButton.click();
+        enterPassword(pwd);
         return this.driver;
+    }
+
+    private void enterUserName(String username) {
+        userName.clear();
+        userName.sendKeys(username);
+        nextButton.click();
+    }
+
+    private void enterPassword(String password) {
+        userPassword.clear();
+        userPassword.sendKeys(password);
+        nextButton.click();
     }
 
 

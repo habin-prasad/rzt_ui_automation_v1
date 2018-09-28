@@ -25,7 +25,7 @@ public class CustomTestListener extends TestListenerAdapter {
         String msgStrt = "Failure ";
         Reporter.setCurrentTestResult(testResult);
         if (method.isTestMethod()) {
-            List<Throwable> verificationFailures = TestBase.getVerificationFailures();
+            List<Throwable> verificationFailures = (List<Throwable>) TestBase.getVerificationFailures();
             if (!verificationFailures.isEmpty()) {
                 testResult.setStatus(ITestResult.FAILURE);
 

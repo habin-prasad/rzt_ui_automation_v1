@@ -1,9 +1,11 @@
 package testPages;
 
-import base.BaseClass;
-import org.openqa.selenium.WebDriver;
+import base.BaseTestClass;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 import pages.LoginPage;
-import utils.Validations;
 
 /**
  * @author: habin,
@@ -12,24 +14,33 @@ import utils.Validations;
  */
 
 
-public class LoginPageTest extends BaseClass {
-    private WebDriver driver;
+public class LoginPageTest extends BaseTestClass {
     private LoginPage loginPage;
 
-    public LoginPageTest(WebDriver driver) {
-        this.driver = driver;
-        validations = new Validations(this.driver);
-
+    @BeforeSuite(alwaysRun = true)
+    @Parameters({"webDriver", "baseUrl"})
+    public void settingUp(String WebDriver, String baseUrl) {
+        setUp(WebDriver, baseUrl);
     }
 
-    public void validateTitle(String title) {
-        validations.validateTitle(title, driver.getTitle());
+
+    @Test(groups = {"loginP"})
+    @Parameters({"loginTitle"})
+    public void validatePTitle(String title) {
+        testBase.verifyEquals(driver.getTitle(), title, driver);
     }
 
-    public void login(String uname, String upass) {
+    @Test(groups = {"loginP"})
+    @Parameters({"username", "password"})
+    public void login(String username, String password) {
         loginPage = new LoginPage(driver);
-        loginPage.login(uname, upass);
+        loginPage.login(username, password);
+        setDriver(driver);
     }
 
+    @AfterSuite
+    public void tearingDown() {
+        tearDown();
+    }
 
 }

@@ -43,6 +43,7 @@ public class LeftPanel {
     }
 
     public void logout() {
+
         profileIcon.click();
         logoutButton.click();
     }
@@ -56,6 +57,7 @@ public class LeftPanel {
     }
 
     public void goSettingsPage() {
+
         settingsIcon.click();
     }
 

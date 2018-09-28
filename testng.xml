@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="API suite 1" verbose="1">
-    <test name="Regression API Tests">
+    <test name="Regression API Tests" preserve-order="true" parallel="false" allow-return-values="true">
+        <groups>
+            <define name="Admin">
+
+            </define>
+            <run>
+                <include name="loginP"/>
+                <include name="settings"/>
+            </run>
+        </groups>
         <classes>
-            <class name="tests.RegressionTests"/>
+            <class name="testPages.LoginPageTest"/>
+            <class name="testPages.SettingsPageTest"/>
         </classes>
 
     </test>
@@ -13,5 +23,8 @@
 
     <parameter name="baseUrl" value="https://bbqanew.razorthink.net"/>
     <parameter name="webDriver" value="chrome"/>
+    <parameter name="username" value="tesla.test.163"/>
+    <parameter name="password" value="P@$sw0rd!@"/>
+    <parameter name="loginTitle" value="Sign in – Google accounts"/>
 
 </suite>

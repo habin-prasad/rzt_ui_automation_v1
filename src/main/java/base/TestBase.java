@@ -67,7 +67,7 @@ public class TestBase {
 
     private void addVerificationFailure(Throwable throwable) {
         Screenshots screenshots = new Screenshots(driver);
-        screenshots.takeScreenshot(Thread.currentThread().getStackTrace()[2].getMethodName());
+        screenshots.takeScreenshot(Thread.currentThread().getStackTrace()[1].getMethodName());
         List verificationFailures = getVerificationFailures();
         verificationFailureMap.put(Reporter.getCurrentTestResult(), verificationFailures);
         verificationFailures.add(throwable);

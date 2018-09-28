@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
-import org.testng.annotations.Parameters;
 
 import java.util.concurrent.TimeUnit;
 
@@ -16,21 +15,55 @@ import java.util.concurrent.TimeUnit;
 
 
 public class BaseTestClass {
-    protected WebDriver driver;
+    public WebDriver driver;
+    protected TestBase testBase = new TestBase();
 
-    @Parameters({"webDriver", "baseUrl"})
+
     public void setUp(String webDriver, String baseUrl) {
-        if (webDriver.equalsIgnoreCase("chrome"))
+        this.driver = selectBrowser(webDriver);
+        this.driver = maximizeWindow();
+        this.driver = implicitDriverWait(20);
+//        System.out.println("Base Url:  "+baseUrl);
+        driver.get(baseUrl);
+    }
+
+    private WebDriver selectBrowser(String webDriver) {
+        if (webDriver.equalsIgnoreCase("chrome")) {
+            String directoryName = System.getProperty("user.dir") + "/drivers/";
+            System.setProperty("webdriver.chrome.driver", directoryName + "chromedriver");
             driver = new ChromeDriver();
-        else if (webDriver.equalsIgnoreCase("safari"))
+        } else if (webDriver.equalsIgnoreCase("safari"))
             driver = new SafariDriver();
         else
             driver = new FirefoxDriver();
 
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.get(baseUrl);
+        return driver;
+    }
+
+    private WebDriver maximizeWindow() {
+        this.driver.manage().window().maximize();
+        return this.driver;
+    }
+
+    private WebDriver implicitDriverWait(int timeInSeconds) {
+        this.driver.manage().timeouts().implicitlyWait(timeInSeconds, TimeUnit.SECONDS);
+        return this.driver;
+    }
+
+    private void verifyPageTitle(String title) {
+        testBase.verifyEquals(driver.getTitle(), title, driver);
     }
 
 
+    public void tearDown() {
+        driver.close();
+    }
+
+    public WebDriver getDriver() {
+        return this.driver;
+    }
+
+    public void setDriver(WebDriver driver) {
+        this.driver = driver;
+    }
 }

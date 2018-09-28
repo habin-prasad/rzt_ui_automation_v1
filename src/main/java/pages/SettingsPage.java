@@ -85,4 +85,7 @@ public class SettingsPage extends LeftPanel {
     }
 
 
+    public WebElement getUserPageElement() {
+        return usersTab;
+    }
 }

@@ -23,8 +23,8 @@
 
     <parameter name="baseUrl" value="https://bbqanew.razorthink.net"/>
     <parameter name="webDriver" value="chrome"/>
-    <parameter name="username" value="tesla.test.163"/>
-    <parameter name="password" value="P@$sw0rd!@"/>
+    <parameter name="username" value=""/>
+    <parameter name="password" value=""/>
     <parameter name="loginTitle" value="Sign in – Google accounts"/>
 
 </suite>

@@ -19,7 +19,7 @@ public class BaseClass {
     public static final int WAIT_TIME_IN_SECS = 10;
     protected static final Logger log = LogManager.getLogger(BaseClass.class.getName());
     static final int WAIT_TIME_IN_MILLISECS = 10000;
-    protected WebDriver driver;
+    public WebDriver driver;
     protected ExcelUtility excelUtility;
     protected MouseActivity mouseActivity;
     protected WaitEx waitEx;

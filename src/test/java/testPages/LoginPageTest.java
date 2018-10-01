@@ -39,7 +39,7 @@ public class LoginPageTest {
     public void login(String username, String password, String title) {
         loginPage.login(username, password);
         validations.validateTitle(title, loginPage.returnTitle(), loginPage.driver);
-    }
+     }
 
     @AfterTest
     public void tearDown() {

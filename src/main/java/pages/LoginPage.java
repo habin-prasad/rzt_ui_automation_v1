@@ -1,5 +1,6 @@
 package pages;
 
+import base.BaseClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,10 +14,8 @@ import utils.WaitEx;
  * To change this template use File | Settings | File and Code Templates.
  */
 
-public class LoginPage {
+public class LoginPage extends BaseClass {
 
-    private WebDriver driver;
-    private WaitEx waitEx;
 
     @FindBy(xpath = "//button[contains(.,'Sign in with Google')]")
     private WebElement ldapLoginButton;
@@ -31,9 +30,9 @@ public class LoginPage {
     private WebElement userPassword;
 
 
-    public LoginPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    public LoginPage(String webDriver, String baseUrl) {
+        setUp(webDriver, baseUrl);
+        PageFactory.initElements(super.driver, this);
         waitEx = new WaitEx(this.driver);
     }
 
@@ -57,6 +56,12 @@ public class LoginPage {
         userPassword.sendKeys(password);
         nextButton.click();
     }
+
+    public String returnTitle() {
+        return driver.getTitle();
+    }
+
+
 
 
 }

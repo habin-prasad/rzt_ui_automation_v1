@@ -57,16 +57,16 @@ public class TestBase {
     }
 
     public void verifyEquals(Object actual, Object expected, WebDriver driver) {
+        this.driver = driver;
         try {
             assertEquals(actual, expected);
         } catch (Throwable throwable) {
-            this.driver = driver;
             addVerificationFailure(throwable);
         }
     }
 
     private void addVerificationFailure(Throwable throwable) {
-        Screenshots screenshots = new Screenshots(driver);
+        Screenshots screenshots = new Screenshots(this.driver);
         screenshots.takeScreenshot(Thread.currentThread().getStackTrace()[1].getMethodName());
         List verificationFailures = getVerificationFailures();
         verificationFailureMap.put(Reporter.getCurrentTestResult(), verificationFailures);

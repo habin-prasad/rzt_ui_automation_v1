@@ -1,12 +1,14 @@
 package testPages;
 
-import base.BaseTestClass;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import pages.LeftPanel;
+import pages.LoginPage;
 import pages.SettingsPage;
+import utils.Validations;
 
 /**
  * author: habin,
@@ -15,34 +17,43 @@ import pages.SettingsPage;
  */
 
 
-public class SettingsPageTest extends BaseTestClass {
-    private WebDriver driver;
+public class SettingsPageTest {
+
     //    private TestBase testBase;
     private SettingsPage settingsPage;
+    private Validations validations = new Validations();
+    private LoginPage loginPage;
+    private LeftPanel leftPanel;
 
 //    @FindBy(linkText = "Users")
 //    private WebElement usersPage;
 
     @BeforeClass(alwaysRun = true)
-    public void navigateToSettingsPage() {
-        this.driver = getDriver();
-        settingsPage = new SettingsPage(driver);
-        settingsPage.clickUsersTab();
+    @Parameters({"webDriver", "baseUrl", "username", "password"})
+    public void navigateToSettingsPage(String webDriver, String baseUrl, String username, String password) {
+        settingsPage = new SettingsPage(webDriver, baseUrl, username, password);
+        settingsPage.goSettingsPage();
     }
 
-    @Test(dependsOnGroups = "loginP", priority = 1, groups = {"settings", "userM"})
+    @Test(priority = 1, groups = {"settings"})
     @Parameters("loginTitle")
     public void verifyTitle(String title) {
-        testBase.verifyEquals(driver.getTitle(), title, driver);
+        validations.validateTitle(title, settingsPage.returnTile(), settingsPage.driver);
     }
 
 
-    @Test(dependsOnGroups = "loginP", priority = 2, groups = {"settings", "userM"})
+    @Test(priority = 2, groups = {"settings"})
     @Parameters({"baseUrl"})
     public void verifyUsersManagementTab(String baseUrl) {
-        testBase.verifyEquals(driver.getCurrentUrl(), baseUrl + "/settings/users", driver);
+        validations.verifyEquals(settingsPage.driver.getCurrentUrl(), baseUrl + "/settings/users", settingsPage.driver);
         WebElement usersPage = settingsPage.getUserPageElement();
-        testBase.verifyEquals(usersPage.getAttribute("aria-current"), "page", driver);
+        validations.verifyEquals(usersPage.getAttribute("aria-current"), "page", settingsPage.driver);
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        settingsPage.driver.quit();
+//        settingsPage.tearDown();
     }
 
 

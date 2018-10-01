@@ -1,6 +1,12 @@
 package base;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import utils.*;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author: habin,
@@ -13,4 +19,51 @@ public class BaseClass {
     protected MouseActivity mouseActivity;
     protected WaitEx waitEx;
     protected Screenshots screenshots;
+    public WebDriver driver;
+
+    public void setUp(String webDriver, String baseUrl) {
+        this.driver = selectBrowser(webDriver);
+        this.driver = maximizeWindow();
+        this.driver = implicitDriverWait(20);
+//        System.out.println("Base Url:  "+baseUrl);
+        driver.get(baseUrl);
+    }
+
+    private WebDriver selectBrowser(String webDriver) {
+        if (webDriver.equalsIgnoreCase("chrome")) {
+            String directoryName = System.getProperty("user.dir") + "/drivers/";
+            System.setProperty("webdriver.chrome.driver", directoryName + "chromedriver");
+            driver = new ChromeDriver();
+        } else if (webDriver.equalsIgnoreCase("safari"))
+            driver = new SafariDriver();
+        else
+            driver = new FirefoxDriver();
+
+        return driver;
+    }
+
+    private WebDriver maximizeWindow() {
+        this.driver.manage().window().maximize();
+        return this.driver;
+    }
+
+    private WebDriver implicitDriverWait(int timeInSeconds) {
+        this.driver.manage().timeouts().implicitlyWait(timeInSeconds, TimeUnit.SECONDS);
+        return this.driver;
+    }
+
+
+    public void tearDown() {
+        driver.quit();
+    }
+
+    public WebDriver getDriver() {
+        return this.driver;
+    }
+
+    public void setDriver(WebDriver driver) {
+        this.driver = driver;
+    }
+
+
 }

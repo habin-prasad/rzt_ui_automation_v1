@@ -20,31 +20,27 @@ public class LoginPageTest {
 
 
     @BeforeSuite(alwaysRun = true)
-    @Parameters({"webDriver", "baseUrl"})
-    public void settingUp(String webDriver, String baseUrl) {
-        loginPage = new LoginPage(webDriver, baseUrl);
+    public void settingUp() {
+        loginPage = new LoginPage();
     }
 
 
-    @Test(groups = "loginP")
+    @Test(groups = "loginP", priority = 1)
     @Parameters({"loginTitle"})
     public void validatePTitle(String title) {
         validations.validateTitle(title, loginPage.returnTitle(), loginPage.driver);
-
-
     }
 
-    @Test(groups = "loginP")
+    @Test(groups = "loginP", priority = 2)
     @Parameters({"username", "password", "loginTitle"})
     public void login(String username, String password, String title) {
         loginPage.login(username, password);
         validations.validateTitle(title, loginPage.returnTitle(), loginPage.driver);
-     }
+    }
 
-    @AfterTest
+    @AfterTest(alwaysRun = true)
     public void tearDown() {
         loginPage.driver.quit();
-//        loginPage.tearDown();
     }
 
 }

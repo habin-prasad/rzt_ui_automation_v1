@@ -1,47 +1,46 @@
 package utils;
 
-import java.io.FileNotFoundException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import static java.lang.Boolean.parseBoolean;
+import static java.lang.Integer.parseInt;
+
 /**
- * @author: habin,
+ * author: habin,
  * created on: 27/09/18 : 3:25 PM
  * To change this template use File | Settings | File and Code Templates.
  */
 
 
 public class ReadProperties {
-    private InputStream inputStream = null;
-    private String propValue = "";
+    private static final Logger log = LogManager.getLogger(ReadProperties.class.getName());
+    private final Properties properties = new Properties();
 
-    public String getPropertyValue(String propKey) {
+    public ReadProperties(String resourceName) {
+        final InputStream inputStream = getClass().getResourceAsStream(resourceName);
         try {
-            String directoryName = System.getProperty("user.dir") + "/resources_config/";
-            Properties properties = new Properties();
-            String propertyFileName = "application.properties";
-            inputStream = getClass().getClassLoader().getResourceAsStream(propertyFileName);
-//            inputStream = FileUtils.class.getResourceAsStream(propertyFileName);
-
-            if (inputStream != null) {
                 properties.load(inputStream);
-            } else {
-                throw new FileNotFoundException("property file " + propertyFileName + " not found at the location");
-            }
-
-            propValue = properties.getProperty(propKey);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                inputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        } catch (final IOException e) {
+            log.error(e.getMessage());
         }
-        return propKey;
     }
 
-}
+    public String getValue(final String key) {
+        return properties.getProperty(key);
+    }
+
+    public boolean getBoolean(final String key) {
+        return parseBoolean(getValue(key));
+    }
+
+    public int getInt(final String key) {
+        return parseInt(getValue(key));
+        }
+    }
+
+

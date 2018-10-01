@@ -30,8 +30,8 @@ public class LoginPage extends BaseClass {
     private WebElement userPassword;
 
 
-    public LoginPage(String webDriver, String baseUrl) {
-        setUp(webDriver, baseUrl);
+    public LoginPage() {
+        setUp();
         PageFactory.initElements(super.driver, this);
         waitEx = new WaitEx(this.driver);
     }
@@ -58,10 +58,8 @@ public class LoginPage extends BaseClass {
     }
 
     public String returnTitle() {
-        return driver.getTitle();
+        return super.driver.getTitle();
     }
-
-
 
 
 }

@@ -1,5 +1,7 @@
 package base;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -9,27 +11,31 @@ import utils.*;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author: habin,
+ * author: habin,
  * created on: 25/09/18 : 5:47 PM
  * To change this template use File | Settings | File and Code Templates.
  */
 public class BaseClass {
-    protected Validations validations;
+    public static final int WAIT_TIME_IN_SECS = 10;
+    protected static final Logger log = LogManager.getLogger(BaseClass.class.getName());
+    static final int WAIT_TIME_IN_MILLISECS = 10000;
+    protected WebDriver driver;
     protected ExcelUtility excelUtility;
     protected MouseActivity mouseActivity;
     protected WaitEx waitEx;
     protected Screenshots screenshots;
-    public WebDriver driver;
+    private ReadProperties readProperties = new ReadProperties("/driver_config.properties");
 
-    public void setUp(String webDriver, String baseUrl) {
-        this.driver = selectBrowser(webDriver);
+    public void setUp() {
+        String baseUrl = readProperties.getValue("qa");
+        this.driver = selectBrowser();
         this.driver = maximizeWindow();
-        this.driver = implicitDriverWait(20);
-//        System.out.println("Base Url:  "+baseUrl);
+        this.driver = implicitDriverWait(WAIT_TIME_IN_SECS);
         driver.get(baseUrl);
     }
 
-    private WebDriver selectBrowser(String webDriver) {
+    private WebDriver selectBrowser() {
+        String webDriver = readProperties.getValue("browser");
         if (webDriver.equalsIgnoreCase("chrome")) {
             String directoryName = System.getProperty("user.dir") + "/drivers/";
             System.setProperty("webdriver.chrome.driver", directoryName + "chromedriver");
@@ -47,7 +53,7 @@ public class BaseClass {
         return this.driver;
     }
 
-    private WebDriver implicitDriverWait(int timeInSeconds) {
+    protected WebDriver implicitDriverWait(int timeInSeconds) {
         this.driver.manage().timeouts().implicitlyWait(timeInSeconds, TimeUnit.SECONDS);
         return this.driver;
     }

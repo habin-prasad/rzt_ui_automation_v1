@@ -5,8 +5,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import pages.LeftPanel;
-import pages.LoginPage;
 import pages.SettingsPage;
 import utils.Validations;
 
@@ -19,30 +17,24 @@ import utils.Validations;
 
 public class SettingsPageTest {
 
-    //    private TestBase testBase;
     private SettingsPage settingsPage;
     private Validations validations = new Validations();
-    private LoginPage loginPage;
-    private LeftPanel leftPanel;
-
-//    @FindBy(linkText = "Users")
-//    private WebElement usersPage;
 
     @BeforeClass(alwaysRun = true)
-    @Parameters({"webDriver", "baseUrl", "username", "password"})
-    public void navigateToSettingsPage(String webDriver, String baseUrl, String username, String password) {
-        settingsPage = new SettingsPage(webDriver, baseUrl, username, password);
+    @Parameters({"username", "password"})
+    public void navigateToSettingsPage(String username, String password) {
+        settingsPage = new SettingsPage(username, password);
         settingsPage.goSettingsPage();
     }
 
-    @Test(priority = 1, groups = {"settings"})
+    @Test(priority = 1, groups = {"settings"}, singleThreaded = true)
     @Parameters("loginTitle")
     public void verifyTitle(String title) {
-        validations.validateTitle(title, settingsPage.returnTile(), settingsPage.driver);
+        validations.verifyEquals(title, settingsPage.returnTile(), settingsPage.driver);
     }
 
 
-    @Test(priority = 2, groups = {"settings"})
+    @Test(priority = 2, groups = {"settings"}, singleThreaded = true)
     @Parameters({"baseUrl"})
     public void verifyUsersManagementTab(String baseUrl) {
         validations.verifyEquals(settingsPage.driver.getCurrentUrl(), baseUrl + "/settings/users", settingsPage.driver);
@@ -50,10 +42,9 @@ public class SettingsPageTest {
         validations.verifyEquals(usersPage.getAttribute("aria-current"), "page", settingsPage.driver);
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
         settingsPage.driver.quit();
-//        settingsPage.tearDown();
     }
 
 

@@ -1,20 +1,19 @@
 package pages;
 
+import base.BaseClass;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.WaitEx;
 
 /**
- * @author: habin,
+ * author: habin,
  * created on: 26/09/18 : 4:40 PM
  * To change this template use File | Settings | File and Code Templates.
  */
 
 
 public class LeftPanel extends LoginPage {
-//    private final WebDriver webDriver;
-//    private LoginPage loginPage;
 
     @FindBy(xpath = "//span[@title='Profile']/parent::span")
     private WebElement profileIcon;
@@ -37,9 +36,8 @@ public class LeftPanel extends LoginPage {
     @FindBy(xpath = "//img")
     private WebElement rztIcon;
 
-    public LeftPanel(String webDriver, String baseUrl, String username, String password) {
-        super(webDriver, baseUrl);
-//        new LoginPage(webDriver, baseUrl);
+    public LeftPanel(String username, String password) {
+        super();
         login(username, password);
         PageFactory.initElements(super.driver, this);
         waitEx = new WaitEx(super.driver);
@@ -59,11 +57,10 @@ public class LeftPanel extends LoginPage {
     }
 
     public void goSettingsPage() {
-//        waitEx.waitElement(By.xpath("//img"),4000);
         try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            implicitDriverWait(BaseClass.WAIT_TIME_IN_SECS);
+        } catch (Exception e) {
+            log.error(e.getMessage());
         }
         settingsIcon.click();
     }

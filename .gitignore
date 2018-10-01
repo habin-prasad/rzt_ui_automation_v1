@@ -1,4 +1,5 @@
 .idea/
-target
+target/
+logs/
+TestScreenshots/
 *.iml
-ui_automation.iml

@@ -17,9 +17,13 @@ public class LoginPage {
 
     private WebDriver driver;
     private WaitEx waitEx;
+    HomePage homePage;
 
     @FindBy(xpath = "//button[contains(.,'Sign in with Google')]")
     private WebElement ldapLoginButton;
+
+    @FindBy(xpath = "//button[contains(.,'Sign in with Razorthink')]")
+    private WebElement loginwithrazorthink;
 
     @FindBy(xpath = "//input[@id='identifierId']")
     private WebElement userName;
@@ -35,6 +39,11 @@ public class LoginPage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
         waitEx = new WaitEx(this.driver);
+    }
+
+    public HomePage loginForExistingUser(){
+        loginwithrazorthink.click();
+        return homePage;
     }
 
     public WebDriver login(String uname, String pwd) {

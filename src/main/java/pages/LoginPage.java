@@ -1,7 +1,6 @@
 package pages;
 
 import base.BaseClass;
-import net.bytebuddy.implementation.bind.annotation.Super;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,20 +30,19 @@ public class LoginPage extends BaseClass {
     private WebElement userPassword;
 
 
-    public LoginPage(String webDriver) {
-        setUp(webDriver);
+    public LoginPage() {
+        setUp();
         PageFactory.initElements(super.driver, this);
         waitEx = new WaitEx(this.driver);
     }
 
-
-    public ExpertAIPage login(String uname, String pwd) {
+    public WebDriver login(String uname, String pwd) {
         ldapLoginButton.click();
         waitEx.waitElement(By.xpath("//input[@id='identifierId']"), 4000);
         enterUserName(uname);
         waitEx.waitElement(By.xpath("//input[@name='password']"), 4000);
         enterPassword(pwd);
-        return new ExpertAIPage();
+        return this.driver;
     }
 
     private void enterUserName(String username) {
@@ -60,11 +58,8 @@ public class LoginPage extends BaseClass {
     }
 
     public String returnTitle() {
-
-        return driver.getTitle();
+        return super.driver.getTitle();
     }
-
-
 
 
 }

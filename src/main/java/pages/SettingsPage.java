@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 /**
- * @author: habin,
+ * author: habin,
  * created on: 26/09/18 : 5:39 PM
  * To change this template use File | Settings | File and Code Templates.
  */
@@ -42,8 +42,8 @@ public class SettingsPage extends LeftPanel {
     private WebElement libraryTab;
 
 
-    public SettingsPage(String webDriver, String baseUrl, String username, String password) {
-        super(webDriver, baseUrl, username, password);
+    public SettingsPage(String username, String password) {
+        super(username, password);
         PageFactory.initElements(driver, this);
     }
 

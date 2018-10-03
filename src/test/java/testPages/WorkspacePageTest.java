@@ -12,18 +12,21 @@ import pages.LoginPage;
 import java.util.concurrent.TimeUnit;
 
 public class WorkspacePageTest extends LoginPage {
-    LoginPage lp =new LoginPage("chrome");
+
         WebDriver driver;
 
     public WorkspacePageTest(String webDriver) {
-        super(webDriver);
+
+        super();
     }
 
 
-    @BeforeClass
-        public void launchBrowser(){
-            lp.login("kajal.kiran@razorthink.com", "1DIwbt$$");
-        }
+   // @BeforeClass
+       // public void launchBrowser(){
+
+        //login("kajal.kiran@razorthink.com", "1");
+
+       // }
 
 
         @Test

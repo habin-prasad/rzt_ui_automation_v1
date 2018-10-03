@@ -1,5 +1,7 @@
 package pages;
 
+import base.BaseClass;
+import net.bytebuddy.implementation.bind.annotation.Super;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,17 +15,11 @@ import utils.WaitEx;
  * To change this template use File | Settings | File and Code Templates.
  */
 
-public class LoginPage {
+public class LoginPage extends BaseClass {
 
-    private WebDriver driver;
-    private WaitEx waitEx;
-    HomePage homePage;
 
     @FindBy(xpath = "//button[contains(.,'Sign in with Google')]")
     private WebElement ldapLoginButton;
-
-    @FindBy(xpath = "//button[contains(.,'Sign in with Razorthink')]")
-    private WebElement loginwithrazorthink;
 
     @FindBy(xpath = "//input[@id='identifierId']")
     private WebElement userName;
@@ -35,24 +31,20 @@ public class LoginPage {
     private WebElement userPassword;
 
 
-    public LoginPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    public LoginPage(String webDriver) {
+        setUp(webDriver);
+        PageFactory.initElements(super.driver, this);
         waitEx = new WaitEx(this.driver);
     }
 
-    public HomePage loginForExistingUser(){
-        loginwithrazorthink.click();
-        return homePage;
-    }
 
-    public WebDriver login(String uname, String pwd) {
+    public ExpertAIPage login(String uname, String pwd) {
         ldapLoginButton.click();
         waitEx.waitElement(By.xpath("//input[@id='identifierId']"), 4000);
         enterUserName(uname);
         waitEx.waitElement(By.xpath("//input[@name='password']"), 4000);
         enterPassword(pwd);
-        return this.driver;
+        return new ExpertAIPage();
     }
 
     private void enterUserName(String username) {
@@ -66,6 +58,13 @@ public class LoginPage {
         userPassword.sendKeys(password);
         nextButton.click();
     }
+
+    public String returnTitle() {
+
+        return driver.getTitle();
+    }
+
+
 
 
 }

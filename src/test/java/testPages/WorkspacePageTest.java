@@ -11,29 +11,32 @@ import pages.LoginPage;
 
 import java.util.concurrent.TimeUnit;
 
-public class WorkspacePageTest extends BaseClass {
-
+public class WorkspacePageTest extends LoginPage {
+    LoginPage lp =new LoginPage("chrome");
         WebDriver driver;
-        static LoginPage login;
+
+    public WorkspacePageTest(String webDriver) {
+        super(webDriver);
+    }
 
 
-        @BeforeClass
+    @BeforeClass
         public void launchBrowser(){
-            launchSetUp();
-            LoginPage lp =new LoginPage(driver);
-            lp.loginForExistingUser();
+            lp.login("kajal.kiran@razorthink.com", "1DIwbt$$");
         }
 
 
         @Test
-        public void fileUploadTest() {
+        public void fileUploadTest()
+        {
             WorkspacePage ws=new WorkspacePage(driver);
             ws.uploadFiles();
         }
 
 
         @AfterClass
-        public void tearDown(){
+        public void tearDown()
+        {
         driver.close();
         }
 }

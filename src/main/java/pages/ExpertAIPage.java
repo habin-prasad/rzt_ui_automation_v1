@@ -1,7 +1,5 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
-
 /**
  * @author: habin,
  * created on: 26/09/18 : 5:37 PM
@@ -9,12 +7,14 @@ import org.openqa.selenium.WebDriver;
  */
 
 
-public class HomePage extends LeftPanel {
+public class ExpertAIPage {
 
 
-    public HomePage(WebDriver driver) {
-        super(driver);
-    }
+//    public HomePage(WebDriver driver) {
+////        super(driver);
+//    }
+
+
 
 
 }

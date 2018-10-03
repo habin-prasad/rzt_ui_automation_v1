@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -13,6 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 
 
 public class SettingsPage extends LeftPanel {
+
 
     @FindBy(linkText = "Users")
     private WebElement usersTab;
@@ -42,9 +42,8 @@ public class SettingsPage extends LeftPanel {
     private WebElement libraryTab;
 
 
-    public SettingsPage(WebDriver driver) {
-        super(driver);
-        goSettingsPage();
+    public SettingsPage(String webDriver, String baseUrl, String username, String password) {
+        super(webDriver, baseUrl, username, password);
         PageFactory.initElements(driver, this);
     }
 
@@ -87,5 +86,9 @@ public class SettingsPage extends LeftPanel {
 
     public WebElement getUserPageElement() {
         return usersTab;
+    }
+
+    public String returnTile() {
+        return driver.getTitle();
     }
 }

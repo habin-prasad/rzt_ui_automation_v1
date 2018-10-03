@@ -11,13 +11,10 @@ import org.openqa.selenium.WebDriver;
 
 
 public class Validations extends TestBase {
-    private WebDriver driver;
 
-    public Validations(WebDriver driver) {
-        this.driver = driver;
-    }
-
-    public void validateTitle(String expected, String actual) {
+    public void validateTitle(String expected, String actual, WebDriver driver) {
         verifyEquals(actual, expected, driver);
     }
+
+
 }

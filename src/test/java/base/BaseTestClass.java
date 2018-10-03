@@ -50,9 +50,9 @@ public class BaseTestClass {
         return this.driver;
     }
 
-    private void verifyPageTitle(String title) {
-        testBase.verifyEquals(driver.getTitle(), title, driver);
-    }
+//    private void verifyPageTitle(String title) {
+//        testBase.verifyEquals(driver.getTitle(), title);
+//    }
 
 
     public void tearDown() {

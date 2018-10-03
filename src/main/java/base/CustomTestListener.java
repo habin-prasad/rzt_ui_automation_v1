@@ -8,6 +8,7 @@ import org.testng.Reporter;
 import org.testng.internal.Utils;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * author: habin,
@@ -66,6 +67,8 @@ public class CustomTestListener extends TestListenerAdapter {
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        log.info("Successfully Completed :" + result);
+        log.info("Successfully Completed :" + result.getMethod() +
+                " in time" + TimeUnit.MILLISECONDS.toSeconds(result.getEndMillis()
+                - result.getStartMillis()) + "seconds");
     }
 }

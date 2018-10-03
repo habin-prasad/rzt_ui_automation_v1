@@ -37,11 +37,13 @@ public class LoginPage extends BaseClass {
     }
 
     public WebDriver login(String uname, String pwd) {
+        log.info("Login to the Application using Google creds");
         ldapLoginButton.click();
         waitEx.waitElement(By.xpath("//input[@id='identifierId']"), 4000);
         enterUserName(uname);
         waitEx.waitElement(By.xpath("//input[@name='password']"), 4000);
         enterPassword(pwd);
+        waitForLoader(driver, By.xpath("//img"));
         return this.driver;
     }
 
@@ -49,17 +51,28 @@ public class LoginPage extends BaseClass {
         userName.clear();
         userName.sendKeys(username);
         nextButton.click();
+        log.info("Username entered");
     }
 
     private void enterPassword(String password) {
         userPassword.clear();
         userPassword.sendKeys(password);
         nextButton.click();
+        log.info("Password entered");
     }
 
-    public String returnTitle() {
-        return super.driver.getTitle();
+//    public String returnTitle() {
+//        return driver.getTitle();
+//    }
+
+
+    @Override
+    public void verifyAddress(String address) {
+        log.info("Address verification Method");
     }
 
-
+    @Override
+    public void verifyTitle(String pageTitle) {
+        testBase.verifyEquals(driver.getTitle(), pageTitle, driver);
+    }
 }

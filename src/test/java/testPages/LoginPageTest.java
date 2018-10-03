@@ -1,7 +1,7 @@
 package testPages;
 
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterGroups;
+import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.LoginPage;
@@ -19,7 +19,7 @@ public class LoginPageTest {
     private Validations validations = new Validations();
 
 
-    @BeforeSuite(alwaysRun = true)
+    @BeforeGroups(alwaysRun = true, groups = "loginP")
     public void settingUp() {
         loginPage = new LoginPage();
     }
@@ -28,17 +28,19 @@ public class LoginPageTest {
     @Test(groups = "loginP", priority = 1)
     @Parameters({"loginTitle"})
     public void validatePTitle(String title) {
-        validations.validateTitle(title, loginPage.returnTitle(), loginPage.driver);
+//        validations.validateTitle(title, loginPage.returnTitle(), loginPage.driver);
+        loginPage.verifyTitle(title);
     }
 
     @Test(groups = "loginP", priority = 2)
     @Parameters({"username", "password", "loginTitle"})
     public void login(String username, String password, String title) {
         loginPage.login(username, password);
-        validations.validateTitle(title, loginPage.returnTitle(), loginPage.driver);
+//        validations.validateTitle(title, loginPage.returnTitle(), loginPage.driver);
+        loginPage.verifyTitle(title);
     }
 
-    @AfterTest(alwaysRun = true)
+    @AfterGroups(alwaysRun = true, groups = "loginP")
     public void tearDown() {
         loginPage.driver.quit();
     }

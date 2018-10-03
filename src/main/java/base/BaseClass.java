@@ -2,7 +2,9 @@ package base;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
@@ -15,7 +17,7 @@ import java.util.concurrent.TimeUnit;
  * created on: 25/09/18 : 5:47 PM
  * To change this template use File | Settings | File and Code Templates.
  */
-public class BaseClass {
+public abstract class BaseClass {
     public static final int WAIT_TIME_IN_SECS = 10;
     protected static final Logger log = LogManager.getLogger(BaseClass.class.getName());
     static final int WAIT_TIME_IN_MILLISECS = 10000;
@@ -24,10 +26,11 @@ public class BaseClass {
     protected MouseActivity mouseActivity;
     protected WaitEx waitEx;
     protected Screenshots screenshots;
-    private ReadProperties readProperties = new ReadProperties("/driver_config.properties");
+    private static ReadProperties readProperties = new ReadProperties("/driver_config.properties");
+    public static final String baseUrl = readProperties.getValue("qa");
+    protected TestBase testBase = new TestBase();
 
     public void setUp() {
-        String baseUrl = readProperties.getValue("qa");
         this.driver = selectBrowser();
         this.driver = maximizeWindow();
         this.driver = implicitDriverWait(WAIT_TIME_IN_SECS);
@@ -71,5 +74,23 @@ public class BaseClass {
         this.driver = driver;
     }
 
+    public WebElement waitForLoader(WebDriver driver, By element) {
+        waitEx = new WaitEx(driver);
 
+        return waitEx.waitForElementToBeClickable(element, 30);
+    }
+
+    public WebElement waitforElementPresentInDOM(WebDriver driver, By element) {
+        waitEx = new WaitEx(driver);
+        return waitEx.ifElementPresentInDOM(element, 30);
+    }
+
+    public abstract void verifyAddress(String address);
+
+    public void verifyText(String actual, String expected) {
+        testBase.verifyEquals(actual, expected, driver);
+    }
+
+
+    public abstract void verifyTitle(String title);
 }

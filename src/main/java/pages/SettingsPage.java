@@ -44,6 +44,8 @@ public class SettingsPage extends LeftPanel {
 
     public SettingsPage(String username, String password) {
         super(username, password);
+        log.info("Navigating to Settings page");
+        goSettingsPage();
         PageFactory.initElements(driver, this);
     }
 
@@ -52,6 +54,7 @@ public class SettingsPage extends LeftPanel {
     }
 
     public void clickRolesTab() {
+        log.info("Clicking on Users Tab");
         rolesTab.click();
     }
 
@@ -91,4 +94,10 @@ public class SettingsPage extends LeftPanel {
     public String returnTile() {
         return driver.getTitle();
     }
+
+    public void verifyAttribute(String attributeValue) {
+        verifyText(usersTab.getAttribute("aria-current"), attributeValue);
+    }
+
+
 }

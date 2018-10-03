@@ -1,6 +1,8 @@
 package base;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -20,6 +22,7 @@ import java.util.Map;
 
 public class TestBase {
     private WebDriver driver;
+    protected static final Logger log = LogManager.getLogger(TestBase.class.getName());
 
     private static Map verificationFailureMap = new HashMap();
 
@@ -49,6 +52,7 @@ public class TestBase {
     }
 
     public void verifyFalse(boolean condition) {
+        log.info("Verifying False: " + condition);
         try {
             assertFalse(condition);
         } catch (Throwable throwable) {
@@ -59,8 +63,10 @@ public class TestBase {
     public void verifyEquals(Object actual, Object expected, WebDriver driver) {
         this.driver = driver;
         try {
+            log.info("Comparing actual value: " + actual + " with expected value: " + expected);
             assertEquals(actual, expected);
         } catch (Throwable throwable) {
+            log.error("FAILED comparing actual value: " + actual + " with expected value: " + expected);
             addVerificationFailure(throwable);
         }
     }

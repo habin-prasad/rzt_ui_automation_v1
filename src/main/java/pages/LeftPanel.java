@@ -4,7 +4,6 @@ import base.BaseClass;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import utils.WaitEx;
 
 /**
  * author: habin,
@@ -40,7 +39,7 @@ public class LeftPanel extends LoginPage {
         super();
         login(username, password);
         PageFactory.initElements(super.driver, this);
-        waitEx = new WaitEx(super.driver);
+
     }
 
     public void logout() {
@@ -57,16 +56,31 @@ public class LeftPanel extends LoginPage {
     }
 
     public void goSettingsPage() {
+        log.info("Navigating to Settings Page");
         try {
-            implicitDriverWait(BaseClass.WAIT_TIME_IN_SECS);
+            Thread.sleep(5000);
+            settingsIcon.click();
         } catch (Exception e) {
             log.error(e.getMessage());
         }
-        settingsIcon.click();
     }
 
     public void getSupport() {
         supportIcon.click();
     }
+
+    @Override
+    public void verifyAddress(String address) {
+
+        testBase.verifyEquals(driver.getCurrentUrl(), BaseClass.baseUrl + address, driver);
+    }
+
+
+    @Override
+    public void verifyTitle(String pageTitle) {
+
+        testBase.verifyEquals(driver.getTitle(), pageTitle, driver);
+    }
+
 
 }

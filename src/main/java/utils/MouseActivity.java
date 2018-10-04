@@ -11,8 +11,8 @@ import org.openqa.selenium.support.ui.Select;
  * To change this template use File | Settings | File and Code Templates.
  */
 public class MouseActivity {
-    WebDriver driver;
-    Actions actions;
+    private WebDriver driver;
+    private Actions actions;
 
     public MouseActivity(WebDriver driver) {
         this.driver = driver;
@@ -26,6 +26,10 @@ public class MouseActivity {
     public void selectElementByText(WebElement element, String text) {
         Select select = new Select(element);
         select.selectByVisibleText(text);
+    }
+
+    public void performSendKeys(WebElement element, Object text){
+        actions.moveToElement(element).click().sendKeys((CharSequence) text).perform();
     }
 
 }

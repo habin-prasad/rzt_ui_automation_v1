@@ -7,13 +7,13 @@
 
             </define>
             <run>
-                <include name="loginP"/>
+                <!--<include name="loginP"/>-->
                 <include name="settings"/>
             </run>
         </groups>
         <classes>
-            <class name="testPages.LoginPageTest"/>
-            <class name="testPages.SettingsPageTest"/>
+            <!--<class name="testPages.LoginPageTest"/>-->
+            <!--<class name="testPages.SettingsPageTest"/>-->
             <class name="testPages.RolesandPermissionTest"/>
         </classes>
 

@@ -23,7 +23,16 @@ public class RoleAndPermissions extends SettingsPage {
     private List<WebElement> webElementList;
 
     @FindBy(css = "div[class ^='EditableContent__wrapper']")
-    private WebElement descList;
+    private List<WebElement> descList;
+
+    @FindBy(css = "div[class^= 'EditableText' ] > input[title='click to edit']")
+    private WebElement activeElement;
+
+    @FindBy(css = "span[contenteditable='plainttext-only'][class^='EditableContent']")
+    private WebElement activeDescArea;
+
+    @FindBy(css = "div[class^='PermissionsAccordion'] > div")
+    private List<WebElement> permissionList;
 
 
     public RoleAndPermissions(String username, String password) {
@@ -34,31 +43,45 @@ public class RoleAndPermissions extends SettingsPage {
     public void addNewRole(String roleLabel) {
         if (roleLabel.length() < 3) {
             log.error("Invalid name length");
-            throw new ArithmeticException("Atleast 3 character long name is expected !!");
+            throw new ArithmeticException("Atleast 3 character long name is expected !!" + roleLabel);
         }
         addNewRoleButton.click();
+        activeElement.sendKeys(roleLabel);
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             log.error(e.getMessage());
         }
-        log.info("Adding role with label : " + roleLabel);
-        driver.switchTo().activeElement().sendKeys(roleLabel);
-        driver.switchTo().activeElement().sendKeys(Keys.TAB);
+        activeElement.sendKeys(Keys.ENTER);
         log.info("Added role with label : " + roleLabel);
     }
 
+    public void addNewRole(String roleLabel, String desc) {
+        addNewRole(roleLabel);
+        WebElement element = descList.get(0);
+        element.click();
+        activeDescArea.sendKeys(desc);
+        activeDescArea.sendKeys(Keys.ENTER);
+    }
+
     public void ifUserRoleAdded(String roleLabel) {
+        String title = "";
+        boolean flag = false;
         log.info("Refreshing the page");
         driver.navigate().refresh();
         for (WebElement element : webElementList) {
-            if (roleLabel.equals(element.getAttribute("title"))) {
-                log.info("Success !! Role added found");
-                testBase.verifyEquals(element.getAttribute("title"), roleLabel, driver);
-            } else {
-                log.error("Role with the roleLabel " + roleLabel + " not found !!");
-                testBase.verifyFalse(true);
+            title = element.getAttribute("title");
+            if (roleLabel.equals(title)) {
+                flag = true;
+                break;
             }
+        }
+        if (flag) {
+            log.info("Success !! Role added found");
+            testBase.verifyEquals(title, roleLabel, driver);
+        } else {
+            log.error("Role with the roleLabel " + roleLabel + " not found !!");
+            testBase.verifyFalse(true);
         }
 
     }

@@ -29,6 +29,7 @@ public abstract class BaseClass {
     private static ReadProperties readProperties = new ReadProperties("/driver_config.properties");
     public static final String baseUrl = readProperties.getValue("qa");
     protected TestBase testBase = new TestBase();
+    protected ToastHandler toastHandler;
 
     public void setUp() {
         this.driver = selectBrowser();

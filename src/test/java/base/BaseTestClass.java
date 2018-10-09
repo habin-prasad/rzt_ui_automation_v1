@@ -56,14 +56,17 @@ public class BaseTestClass {
 
 
     public void tearDown() {
+
         driver.close();
     }
 
     public WebDriver getDriver() {
+
         return this.driver;
     }
 
     public void setDriver(WebDriver driver) {
+
         this.driver = driver;
     }
 }

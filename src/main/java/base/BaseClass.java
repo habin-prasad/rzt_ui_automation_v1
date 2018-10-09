@@ -40,7 +40,7 @@ public abstract class BaseClass {
     private WebDriver selectBrowser() {
         String webDriver = readProperties.getValue("browser");
         if (webDriver.equalsIgnoreCase("chrome")) {
-            String directoryName = System.getProperty("user.dir") + "/drivers/";
+            String directoryName = System.getProperty("user.dir") + "/drivers/linux/";
             System.setProperty("webdriver.chrome.driver", directoryName + "chromedriver");
             driver = new ChromeDriver();
         } else if (webDriver.equalsIgnoreCase("safari"))

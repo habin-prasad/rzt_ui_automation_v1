@@ -7,14 +7,17 @@
 
             </define>
             <run>
-                <!--<include name="loginP"/>-->
+                <include name="loginP"/>
                 <include name="settings"/>
+
+                <include name="workspace"/>
             </run>
         </groups>
         <classes>
-            <!--<class name="testPages.LoginPageTest"/>-->
-            <!--<class name="testPages.SettingsPageTest"/>-->
+            <class name="testPages.LoginPageTest"/>
+            <class name="testPages.SettingsPageTest"/>
             <class name="testPages.RolesandPermissionTest"/>
+            <class name="testPages.WorkspacePageTest"/>
         </classes>
 
     </test>
@@ -22,8 +25,9 @@
         <listener class-name="base.CustomTestListener"/>
     </listeners>
 
-    <parameter name="username" value=""/>
-    <parameter name="password" value=""/>
+    <parameter name="username" value="kajal.razorthink@gmail.com"/>
+    <parameter name="password" value="Kaj@12345"/>
     <parameter name="loginTitle" value="Razorthink AI"/>
+    <parameter name="pageTitle" value="Razorthink AI"/>
 
 </suite>

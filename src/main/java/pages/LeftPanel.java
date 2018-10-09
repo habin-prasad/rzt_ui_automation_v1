@@ -20,7 +20,8 @@ public class LeftPanel extends LoginPage {
     @FindBy(xpath = "//button[contains(.,'Logout')]")
     private WebElement logoutButton;
 
-    @FindBy(xpath = "//span[@title='Workspace']/parent::span")
+   // @FindBy(xpath = "//span[@title='Workspace']/parent::span")
+    @FindBy(xpath = "//a[@href='/workspace']//span[@title='Workspace']")
     private WebElement workSpaceIcon;
 
     @FindBy(xpath = "//span[@title='Jupyter']/parent::span")
@@ -47,11 +48,19 @@ public class LeftPanel extends LoginPage {
         logoutButton.click();
     }
 
+
+    public void goWorkspace(){
+        workSpaceIcon.click();
+    }
+
+
     public void goHomePage() {
+
         rztIcon.click();
     }
 
     public void openJupyter() {
+
         jupyterIcon.click();
     }
 
@@ -66,17 +75,18 @@ public class LeftPanel extends LoginPage {
     }
 
     public void getSupport() {
+
         supportIcon.click();
     }
 
-    @Override
+
     public void verifyAddress(String address) {
 
         testBase.verifyEquals(driver.getCurrentUrl(), BaseClass.baseUrl + address, driver);
     }
 
 
-    @Override
+
     public void verifyTitle(String pageTitle) {
 
         testBase.verifyEquals(driver.getTitle(), pageTitle, driver);

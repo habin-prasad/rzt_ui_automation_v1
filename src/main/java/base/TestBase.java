@@ -32,14 +32,17 @@ public class TestBase {
     }
 
     private void assertTrue(boolean condition) {
+
         Assert.assertTrue(condition);
     }
 
     private void assertFalse(boolean condition) {
+
         Assert.assertFalse(condition);
     }
 
     private void assertEquals(Object actual, Object expected) {
+
         Assert.assertEquals(actual, expected);
     }
 

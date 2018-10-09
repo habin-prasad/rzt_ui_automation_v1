@@ -5,42 +5,53 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.WorkspacePage;
 import pages.LoginPage;
 
+import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
-public class WorkspacePageTest extends LoginPage {
+public class WorkspacePageTest {
 
-        WebDriver driver;
+        private WorkspacePage workspacePage;
 
-    public WorkspacePageTest(String webDriver) {
+        @BeforeClass(alwaysRun = true)
+        @Parameters({"username", "password"})
+        public void navigateToWorkspace(String username, String password) {
+            workspacePage = new WorkspacePage(username, password);
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            workspacePage.goToWorkspace();
+        }
 
-        super();
-    }
-
-
-   // @BeforeClass
-       // public void launchBrowser(){
-
-        //login("kajal.kiran@razorthink.com", "1");
-
-       // }
-
-
-        @Test
+        @Test(priority = 2, groups = {"workspace"})
         public void fileUploadTest()
         {
-            WorkspacePage ws=new WorkspacePage(driver);
-            ws.uploadFiles();
+            try {
+                workspacePage.uploadFiles();
+            } catch (AWTException e) {
+                e.printStackTrace();
+            }
         }
 
 
-        @AfterClass
-        public void tearDown()
+        @Test(priority = 1, groups = {"workspace"})
+        @Parameters({"pageTitle"})
+        public void verifyTitle(String pageTitle)
         {
-        driver.close();
+            workspacePage.verifyTitle(pageTitle);
         }
+
+
+      //  @AfterClass(alwaysRun = true)
+       // public void tearDown()
+      //  {
+     //       workspacePage.tearDown();
+      //  }
 }
 

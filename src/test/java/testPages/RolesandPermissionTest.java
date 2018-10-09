@@ -31,7 +31,7 @@ public class RolesandPermissionTest {
         roleAndPermissions.addNewRole(roleName);
     }
 
-    @Test(groups = "settings")
+    @Test(groups = "settings",enabled = true)
     public void verifyIfUserAdded() {
         roleAndPermissions.ifUserRoleAdded(roleName);
     }

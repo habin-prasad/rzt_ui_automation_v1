@@ -3,6 +3,7 @@ package base;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -30,6 +31,7 @@ public abstract class BaseClass {
     public static final String baseUrl = readProperties.getValue("qa");
     protected TestBase testBase = new TestBase();
     protected ToastHandler toastHandler;
+    protected JavascriptExecutor js;
 
     public void setUp() {
         this.driver = selectBrowser();
@@ -53,7 +55,7 @@ public abstract class BaseClass {
     }
 
     private WebDriver maximizeWindow() {
-        this.driver.manage().window().maximize();
+        this.driver.manage().window().fullscreen();
         return this.driver;
     }
 

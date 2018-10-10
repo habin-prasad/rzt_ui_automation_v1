@@ -1,6 +1,6 @@
 package testPages;
 
-import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterGroups;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -36,7 +36,7 @@ public class SettingsPageTest {
         settingsPage.verifyAttribute("page");
     }
 
-    @AfterClass(alwaysRun = true)
+    @AfterGroups(alwaysRun = true, groups = "dettings")
     public void tearDown() {
         settingsPage.driver.quit();
     }

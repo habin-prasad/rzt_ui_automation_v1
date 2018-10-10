@@ -149,6 +149,13 @@
             <artifactId>javafaker</artifactId>
             <version>0.12</version>
         </dependency>
+        <!--This dependency is to use webdrivermanager-->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>3.0.0</version>
+            <scope>test</scope>
+        </dependency>
 
 
     </dependencies>

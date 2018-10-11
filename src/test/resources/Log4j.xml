@@ -6,14 +6,14 @@
     <Appenders>
         <RollingFile name="File" fileName="${basePath}/RztAI_UI_Auto.log"
                      filePattern="${basePath}/RztAI_UI_Auto-%d{yyyy-MM-dd}.log">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %c{1} - %msg%n"/>
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %c{3} - %msg%n"/>
             <Policies>
                 <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
                 <SizeBAsedTriggeringPolicy size="100 KB"/>
             </Policies>
         </RollingFile>
         <Console name="Console">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %c{2} -%msg%n"/>
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %c{3} -%msg%n"/>
         </Console>
     </Appenders>
     <Loggers>

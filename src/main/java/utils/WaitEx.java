@@ -30,7 +30,7 @@ public class WaitEx {
             WebDriverWait wait = new WebDriverWait(driver, timeout);
             element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            log.error(e.getMessage());
         }
         return element;
     }

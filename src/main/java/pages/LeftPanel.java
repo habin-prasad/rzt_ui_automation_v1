@@ -4,6 +4,10 @@ import base.BaseClass;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utils.WaitEx;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * author: habin,
@@ -35,11 +39,15 @@ public class LeftPanel extends LoginPage {
     @FindBy(xpath = "//img")
     private WebElement rztIcon;
 
+    @FindBy(css = "div[class^='ProfilePopup__userRoles']>span:nth-child(1)")
+    private WebElement rolesLabel;
+
     public LeftPanel(String username, String password) {
         super();
         login(username, password);
         PageFactory.initElements(super.driver, this);
-
+        waitEx = new WaitEx(driver);
+        setIsAdmin(isAdmin());
     }
 
     public void logout() {
@@ -67,6 +75,20 @@ public class LeftPanel extends LoginPage {
 
     public void getSupport() {
         supportIcon.click();
+    }
+
+    public boolean isAdmin() {
+        try {
+            Thread.sleep(5000);
+            profileIcon.click();
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
+        String[] roles = rolesLabel.getAttribute("title").split(",");
+        List rolesList = Arrays.asList(roles);
+        boolean flag = rolesList.contains("Admin");
+        testBase.verifyTrue(flag, driver);
+        return flag;
     }
 
     @Override

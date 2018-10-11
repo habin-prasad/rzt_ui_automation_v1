@@ -1,5 +1,6 @@
 package base;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -8,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import utils.*;
 
 import java.util.concurrent.TimeUnit;
@@ -22,34 +23,47 @@ public abstract class BaseClass {
     public static final int WAIT_TIME_IN_SECS = 10;
     protected static final Logger log = LogManager.getLogger(BaseClass.class.getName());
     static final int WAIT_TIME_IN_MILLISECS = 10000;
+    protected static boolean IS_ADMIN;
+    private static ReadProperties readProperties = new ReadProperties("/driver_config.properties");
+    public static final String baseUrl = readProperties.getValue("qa");
     public WebDriver driver;
     protected ExcelUtility excelUtility;
     protected MouseActivity mouseActivity;
     protected WaitEx waitEx;
     protected Screenshots screenshots;
-    private static ReadProperties readProperties = new ReadProperties("/driver_config.properties");
-    public static final String baseUrl = readProperties.getValue("qa");
     protected TestBase testBase = new TestBase();
     protected ToastHandler toastHandler;
     protected JavascriptExecutor js;
 
+    public static boolean isIsAdmin() {
+        return IS_ADMIN;
+    }
+
+    public static void setIsAdmin(boolean isAdmin) {
+        IS_ADMIN = isAdmin;
+    }
+
     public void setUp() {
         this.driver = selectBrowser();
-        this.driver = maximizeWindow();
         this.driver = implicitDriverWait(WAIT_TIME_IN_SECS);
+        this.driver = maximizeWindow();
         driver.get(baseUrl);
     }
 
     private WebDriver selectBrowser() {
         String webDriver = readProperties.getValue("browser");
         if (webDriver.equalsIgnoreCase("chrome")) {
-            String directoryName = System.getProperty("user.dir") + "/drivers/";
-            System.setProperty("webdriver.chrome.driver", directoryName + "chromedriver");
+//            String directoryName = System.getProperty("user.dir") + "/drivers/";
+//            System.setProperty("webdriver.chrome.driver", directoryName + "chromedriver");
+            WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
-        } else if (webDriver.equalsIgnoreCase("safari"))
-            driver = new SafariDriver();
-        else
+        } else if (webDriver.equalsIgnoreCase("phantomjs")) {
+            WebDriverManager.iedriver();
+            driver = new InternetExplorerDriver();
+        } else {
+            WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
+        }
 
         return driver;
     }
@@ -79,13 +93,16 @@ public abstract class BaseClass {
 
     public WebElement waitForLoader(WebDriver driver, By element) {
         waitEx = new WaitEx(driver);
-
         return waitEx.waitForElementToBeClickable(element, 30);
     }
 
     public WebElement waitforElementPresentInDOM(WebDriver driver, By element) {
         waitEx = new WaitEx(driver);
         return waitEx.ifElementPresentInDOM(element, 30);
+    }
+
+    public boolean isElementDisplayed(WebElement element) {
+        return element.isDisplayed();
     }
 
     public abstract void verifyAddress(String address);

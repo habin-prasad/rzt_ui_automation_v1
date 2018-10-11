@@ -1,10 +1,8 @@
 package testPages;
 
+import base.BaseClass;
 import com.github.javafaker.Faker;
-import org.testng.annotations.AfterGroups;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.RoleAndPermissions;
 
 /**
@@ -28,6 +26,11 @@ public class RolesandPermissionTest {
         roleName = faker.name().firstName();
         newRoleLabel = "Updated_" + faker.name().lastName();
 
+    }
+
+    @BeforeGroups(groups = "roles_permissions")
+    public void verifyEnv() {
+        BaseClass.isIsAdmin();
     }
 
     @Test(priority = 901, groups = "roles_permissions", enabled = true)
@@ -76,7 +79,7 @@ public class RolesandPermissionTest {
         roleAndPermissions.updateRole(roleName, "Updated_" + roleName, faker.name().fullName());
     }
 
-    @AfterGroups(groups = "roles_permissions", enabled = true, alwaysRun = true)
+    @AfterGroups(groups = "roles_permissions", alwaysRun = true)
     public void tearDown() {
         roleAndPermissions.logout();
         roleAndPermissions.tearDown();

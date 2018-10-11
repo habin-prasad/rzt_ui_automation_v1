@@ -199,13 +199,7 @@ public class RoleAndPermissions extends SettingsPage {
     private void editName(String roleLabel, String newLabel) {
         WebElement element = webElementList.get(getPosition(roleLabel));
         mouseActivity = new MouseActivity(driver);
-//        mouseActivity.performDoubleClickEnterText(element,newLabel);
-//        waiter();
-//        element.sendKeys(Keys.ENTER);
         js = (JavascriptExecutor) driver;
-//        js.executeScript("argument[0].click",element);
-//        js.executeScript("argument[0].clear",element);
-//        js.executeScript("document.getElementByXpath('//span[@title=\'"+roleLabel+"\'])').setAttribute('value','"+newLabel+"')",element);
         js.executeScript("arguments[0].value='" + newLabel + "'", element);
         log.info("Edited the Role label: " + roleLabel + " with new Label: " + newLabel);
     }

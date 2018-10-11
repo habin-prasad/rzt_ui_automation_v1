@@ -14,6 +14,8 @@ import utils.*;
 
 import java.util.concurrent.TimeUnit;
 
+//import org.apache.logging.log4j
+
 /**
  * author: habin,
  * created on: 25/09/18 : 5:47 PM
@@ -21,12 +23,12 @@ import java.util.concurrent.TimeUnit;
  */
 public abstract class BaseClass {
     public static final int WAIT_TIME_IN_SECS = 10;
-    protected static final Logger log = LogManager.getLogger(BaseClass.class.getName());
     static final int WAIT_TIME_IN_MILLISECS = 10000;
     protected static boolean IS_ADMIN;
     private static ReadProperties readProperties = new ReadProperties("/driver_config.properties");
     public static final String baseUrl = readProperties.getValue("qa");
     public WebDriver driver;
+    protected Logger log = LogManager.getLogger(BaseClass.class.getName());
     protected ExcelUtility excelUtility;
     protected MouseActivity mouseActivity;
     protected WaitEx waitEx;
@@ -48,13 +50,12 @@ public abstract class BaseClass {
         this.driver = implicitDriverWait(WAIT_TIME_IN_SECS);
         this.driver = maximizeWindow();
         driver.get(baseUrl);
+
     }
 
     private WebDriver selectBrowser() {
         String webDriver = readProperties.getValue("browser");
         if (webDriver.equalsIgnoreCase("chrome")) {
-//            String directoryName = System.getProperty("user.dir") + "/drivers/";
-//            System.setProperty("webdriver.chrome.driver", directoryName + "chromedriver");
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
         } else if (webDriver.equalsIgnoreCase("phantomjs")) {

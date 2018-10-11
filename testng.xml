@@ -14,8 +14,8 @@
         </groups>
         <classes>
             <!--<class name="testPages.LoginPageTest"/>-->
-            <!--<class name="testPages.SettingsPageTest"/>-->
-            <class name="testPages.RolesandPermissionTest"/>
+            <!--<class name="testPages.admin.SettingsPageTest"/>-->
+            <class name="testPages.admin.RolesandPermissionTest"/>
         </classes>
 
     </test>

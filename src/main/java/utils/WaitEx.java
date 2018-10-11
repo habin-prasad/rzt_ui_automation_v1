@@ -20,6 +20,7 @@ public class WaitEx {
     private WebDriver driver;
 
     public WaitEx(WebDriver driver) {
+
         this.driver = driver;
     }
 

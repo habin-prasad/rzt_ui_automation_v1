@@ -75,11 +75,13 @@ public class LoginPage extends BaseClass {
 
     @Override
     public void verifyAddress(String address) {
+
         log.info("Address verification Method");
     }
 
     @Override
     public void verifyTitle(String pageTitle) {
+
         testBase.verifyEquals(driver.getTitle(), pageTitle, driver);
     }
 }

@@ -1,7 +1,6 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -12,12 +11,12 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.util.List;
 
-public class WorkspacePage extends LeftPanel{
+public class WorkspacePage extends LeftPanel {
 
     //@FindBy(xpath = "//div[@classname='SecondaryHeader__rightChildContainer___1EJ3_']")
     //div[@id='mainContainer']/div//div[@class='App__pageWrapperInner___EIS2A']
     //private WebElement upload;
-    
+
     @FindBy(xpath = "//a[@href='/workspace']")
     private WebElement workspace;
 
@@ -34,7 +33,7 @@ public class WorkspacePage extends LeftPanel{
     private WebElement ClickDone;
 
     @FindBy(xpath = "//button[@title='Download']")
-    private  WebElement downloadMyspaceFiles;
+    private WebElement downloadMyspaceFiles;
 
     @FindBy(xpath = "")
     private WebElement deleteMyspaceFile;
@@ -58,7 +57,7 @@ public class WorkspacePage extends LeftPanel{
         //goWorkspace();
     }
 
-    public void goToWorkspace(){
+    public void goToWorkspace() {
         workspace.click();
         try {
             Thread.sleep(2000);
@@ -93,34 +92,34 @@ public class WorkspacePage extends LeftPanel{
 
     }
 
-    public void downloadFilesFromMyspace(){
+    public void downloadFilesFromMyspace() {
         List<WebElement> downloadfilelist = downloadMyspaceFiles.findElements(By.linkText("download"));
 
     }
 
-    public void deleteFilesFromMyspace(){
-        
-    }
-
-    public void makeMyspaceFilePublic(){
+    public void deleteFilesFromMyspace() {
 
     }
 
-    public void navigateToCommunity(){
+    public void makeMyspaceFilePublic() {
 
     }
 
-    public void copyFileFromCommunityToMyspace(){
+    public void navigateToCommunity() {
 
-       
     }
 
-    public void downloadFilesFromCommunity(){
-        
+    public void copyFileFromCommunityToMyspace() {
+
+
     }
 
-     public void tearDown(){
-         driver.quit();
-     }
+    public void downloadFilesFromCommunity() {
+
+    }
+
+    public void tearDown() {
+        driver.quit();
+    }
 }
 

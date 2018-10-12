@@ -1,36 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="API suite 1" verbose="1">
-    <test name="Regression API Tests" preserve-order="true" parallel="false" allow-return-values="true">
+<suite name="Razorthink AI suite 1" verbose="1">
+    <test name="Regression API Tests" parallel="false" allow-return-values="true">
         <groups>
             <define name="Admin">
-                <include name="workspace"/>
-                <!--
-                <include name="settings"/>
-                -->
+
             </define>
             <run>
-                <include name="loginP"/>
-                <include name="Admin"/>
+                <!--<include name="loginP"/>-->
+                <!--<include name="settings"/>-->
+                <include name="roles_permissions"/>
             </run>
         </groups>
         <classes>
-            <!--
-            <class name="testPages.LoginPageTest"/>
-            <class name="testPages.SettingsPageTest"/>
-            <class name="testPages.RolesandPermissionTest"/>-->
-            <class name="testPages.WorkspacePageTest"/>
+            <!--<class name="testPages.LoginPageTest"/>-->
+            <!--<class name="testPages.SettingsPageTest"/>-->
+            <class name="testPages.RolesandPermissionTest"/>
         </classes>
 
     </test>
-
     <listeners>
         <listener class-name="base.CustomTestListener"/>
     </listeners>
 
-    <parameter name="username" value="kajal.razorthink@gmail.com"/>
-    <parameter name="password" value="Kaj@12345"/>
+    <parameter name="username" value="tesla.test.163"/>
+    <parameter name="password" value="P@$sw0rd!@"/>
     <parameter name="loginTitle" value="Razorthink AI"/>
-    <parameter name="pageTitle" value="Razorthink AI"/>
 
 </suite>

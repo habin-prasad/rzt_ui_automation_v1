@@ -21,14 +21,17 @@ import java.util.Map;
 
 
 public class TestBase {
-    private WebDriver driver;
     protected static final Logger log = LogManager.getLogger(TestBase.class.getName());
-
     private static Map verificationFailureMap = new HashMap();
+    private WebDriver driver;
 
     public static List getVerificationFailures() {
         List verificationFailures = (List) verificationFailureMap.get(Reporter.getCurrentTestResult());
         return verificationFailures == null ? new ArrayList() : verificationFailures;
+    }
+
+    private void setDriver(WebDriver driver) {
+        this.driver = driver;
     }
 
     private void assertTrue(boolean condition) {
@@ -46,7 +49,8 @@ public class TestBase {
         Assert.assertEquals(actual, expected);
     }
 
-    public void verifyTrue(boolean condition) {
+    public void verifyTrue(boolean condition, WebDriver driver) {
+        setDriver(driver);
         try {
             assertTrue(condition);
         } catch (Throwable throwable) {
@@ -54,7 +58,8 @@ public class TestBase {
         }
     }
 
-    public void verifyFalse(boolean condition) {
+    public void verifyFalse(boolean condition, WebDriver driver) {
+        setDriver(driver);
         log.info("Verifying False: " + condition);
         try {
             assertFalse(condition);

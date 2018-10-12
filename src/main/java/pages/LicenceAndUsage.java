@@ -10,7 +10,7 @@ public class LicenceAndUsage {
 
 
     @FindBy(xpath = "//button[@title='']/span")
-    private  WebElement maximiseGraphIcon;
+    private WebElement maximiseGraphIcon;
 
     @FindBy(xpath = "//button[@title='Close Popup']/span")
     private WebElement closePopup;
@@ -19,6 +19,4 @@ public class LicenceAndUsage {
     private WebElement tabularForm;
 
 
-
-
-    }
+}

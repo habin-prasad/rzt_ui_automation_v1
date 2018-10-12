@@ -50,7 +50,7 @@ public class WorkspacePage extends LeftPanel{
         //goWorkspace();
     }
 
-    public void goToWorkspace(){
+    public void goToWorkspace() {
         workspace.click();
         try {
             Thread.sleep(2000);

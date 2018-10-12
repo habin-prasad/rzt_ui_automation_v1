@@ -1,6 +1,7 @@
 package testPages;
 
 import com.github.javafaker.Faker;
+import org.testng.annotations.AfterGroups;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -26,15 +27,20 @@ public class RolesandPermissionTest {
         roleName = faker.name().firstName();
     }
 
-    @Test(groups = "settings")
+    @Test(groups = {"settings"}, priority = 1)
     public void addNewUser() {
         roleAndPermissions.addNewRole(roleName);
     }
 
-    @Test(groups = "settings",enabled = true)
+    @Test(groups = {"settings"},enabled = true)
     public void verifyIfUserAdded() {
+
         roleAndPermissions.ifUserRoleAdded(roleName);
     }
 
+    @AfterGroups(alwaysRun = true, groups = {"settings"})
+    public void tearDown() {
 
+        roleAndPermissions.driver.quit();
+    }
 }

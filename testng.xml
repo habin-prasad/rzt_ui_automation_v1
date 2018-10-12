@@ -4,23 +4,26 @@
     <test name="Regression API Tests" preserve-order="true" parallel="false" allow-return-values="true">
         <groups>
             <define name="Admin">
-
+                <include name="workspace"/>
+                <!--
+                <include name="settings"/>
+                -->
             </define>
             <run>
                 <include name="loginP"/>
-                <include name="settings"/>
-
-                <include name="workspace"/>
+                <include name="Admin"/>
             </run>
         </groups>
         <classes>
+            <!--
             <class name="testPages.LoginPageTest"/>
             <class name="testPages.SettingsPageTest"/>
-            <class name="testPages.RolesandPermissionTest"/>
+            <class name="testPages.RolesandPermissionTest"/>-->
             <class name="testPages.WorkspacePageTest"/>
         </classes>
 
     </test>
+
     <listeners>
         <listener class-name="base.CustomTestListener"/>
     </listeners>

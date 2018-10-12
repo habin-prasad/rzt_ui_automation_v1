@@ -32,11 +32,7 @@ public class WorkspacePageTest {
         @Test(priority = 2, groups = {"workspace"})
         public void fileUploadTest()
         {
-            try {
-                workspacePage.uploadFiles();
-            } catch (AWTException e) {
-                e.printStackTrace();
-            }
+            workspacePage.uploadFiles();
         }
 
 
@@ -48,10 +44,47 @@ public class WorkspacePageTest {
         }
 
 
-      //  @AfterClass(alwaysRun = true)
-       // public void tearDown()
-      //  {
-     //       workspacePage.tearDown();
-      //  }
+        @Test(priority = 3, groups = {"workspace"})
+        public void downloadMyspaceFiles()
+        {
+            workspacePage.downloadFilesFromMySpace();
+        }
+
+
+        @Test(priority = 4, groups = {"workspace"})
+        public void makeMyspaceFilesPublic()
+        {
+            workspacePage.makeMyspaceFilePublic();
+        }
+
+
+        @Test(priority = 5, groups = {"workspace"})
+        public void downloadFilesFromCommunity()
+        {
+            workspacePage.navigateToCommunity();
+            workspacePage.downloadFilesFromCommunity();
+
+        }
+
+
+        @Test(priority = 7, groups = {"workspace"})
+        public void deleteFilesFromMyspace()
+        {
+            workspacePage.deleteFilesFromMyspace();
+        }
+
+
+        @Test(priority = 6, groups = {"workspace"})
+        public void copyFilesToMyspace()
+        {
+            workspacePage.copyFileFromCommunityToMyspace();
+
+        }
+
+        @AfterClass(alwaysRun = true)
+        public void tearDown()
+        {
+           workspacePage.tearDown();
+        }
 }
 

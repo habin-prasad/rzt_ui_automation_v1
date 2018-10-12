@@ -19,29 +19,29 @@ public class LoginPageTest {
     private Validations validations = new Validations();
 
 
-    @BeforeGroups(alwaysRun = true, groups = "loginP")
+    @BeforeGroups(alwaysRun = true, groups = {"loginP"})
     public void settingUp() {
         loginPage = new LoginPage();
     }
 
 
-    @Test(groups = "loginP", priority = 1)
+    @Test(groups = {"loginP"}, priority = 2)
     @Parameters({"loginTitle"})
     public void validatePTitle(String title) {
 //        validations.validateTitle(title, loginPage.returnTitle(), loginPage.driver);
         loginPage.verifyTitle(title);
     }
 
-    @Test(groups = "loginP", priority = 2)
-    @Parameters({"username", "password", "loginTitle"})
-    public void login(String username, String password, String title) {
+    @Test(groups = {"loginP"}, priority = 1)
+    @Parameters({"username", "password"})
+    public void login(String username, String password) {
         loginPage.login(username, password);
 //        validations.validateTitle(title, loginPage.returnTitle(), loginPage.driver);
-        loginPage.verifyTitle(title);
     }
 
-    @AfterGroups(alwaysRun = true, groups = "loginP")
+    @AfterGroups(alwaysRun = true, groups = {"loginP"})
     public void tearDown() {
+
         loginPage.driver.quit();
     }
 

@@ -18,7 +18,7 @@ import utils.WaitEx;
 public class LoginPage extends BaseClass {
 
 
-    @FindBy(xpath = "//button[contains(.,'Sign in with Google')]")
+    @FindBy(xpath = "//button[contains(.,'Continue with Google')]")
     private WebElement ldapLoginButton;
 
     @FindBy(xpath = "//input[@id='identifierId']")

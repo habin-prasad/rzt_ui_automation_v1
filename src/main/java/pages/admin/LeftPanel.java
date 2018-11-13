@@ -43,6 +43,9 @@ public class LeftPanel extends LoginPage {
     @FindBy(css = "div[class^='ProfilePopup__userRoles']>span:nth-child(1)")
     private WebElement rolesLabel;
 
+    @FindBy(css = "div[class*='userEmail']")
+    private WebElement userEmail;
+
     public LeftPanel(String username, String password) {
         super();
         login(username, password);
@@ -79,12 +82,7 @@ public class LeftPanel extends LoginPage {
     }
 
     public boolean isAdmin() {
-        try {
-            Thread.sleep(5000);
-            profileIcon.click();
-        } catch (Exception e) {
-            log.error(e.getMessage());
-        }
+        clickProfileIcon();
         String[] roles = rolesLabel.getAttribute("title").split(",");
         List rolesList = Arrays.asList(roles);
         boolean flag = rolesList.contains("Admin");
@@ -103,6 +101,20 @@ public class LeftPanel extends LoginPage {
     public void verifyTitle(String pageTitle) {
 
         testBase.verifyEquals(driver.getTitle(), pageTitle, driver);
+    }
+
+    public void setEmailVar() {
+        clickProfileIcon();
+        setEMAIL(userEmail.getText());
+    }
+
+    private void clickProfileIcon() {
+        try {
+            Thread.sleep(5000);
+            profileIcon.click();
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
     }
 
 

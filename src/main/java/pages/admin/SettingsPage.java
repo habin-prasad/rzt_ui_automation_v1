@@ -1,6 +1,5 @@
 package pages.admin;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -34,7 +33,7 @@ public class SettingsPage extends LeftPanel {
     private WebElement updateTab;
 
     @FindBy(linkText = "Workspace Manager")
-    private WebElement workspaceTab;
+    private WebElement workspaceManagerTab;
 
     @FindBy(linkText = "Open Requests")
     private WebElement openRequestsTab;
@@ -75,8 +74,8 @@ public class SettingsPage extends LeftPanel {
         updateTab.click();
     }
 
-    public void clickWorkspace() {
-        workspaceTab.click();
+    public void clickWorkspaceManagerTab() {
+        workspaceManagerTab.click();
     }
 
     public void clickOpenRequests() {
@@ -98,11 +97,6 @@ public class SettingsPage extends LeftPanel {
 
     public void verifyAttribute(String attributeValue) {
         verifyText(usersTab.getAttribute("aria-current"), attributeValue);
-    }
-
-    protected String getUserName(String email) {
-        WebElement element = driver.findElement(By.xpath("//div[@title='" + email + "']/parent::div/div[1]"));
-        return element.getAttribute("title");
     }
 
 

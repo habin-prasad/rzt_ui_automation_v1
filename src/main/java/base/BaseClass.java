@@ -37,6 +37,16 @@ public abstract class BaseClass {
     protected ToastHandler toastHandler;
     protected JavascriptExecutor js;
 
+    protected static String EMAIL;
+
+    public static String getEMAIL() {
+        return EMAIL;
+    }
+
+    public static void setEMAIL(String EMAIL) {
+        BaseClass.EMAIL = EMAIL;
+    }
+
     public static boolean isIsAdmin() {
         return IS_ADMIN;
     }

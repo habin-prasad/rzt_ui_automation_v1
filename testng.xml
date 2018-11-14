@@ -7,16 +7,16 @@
 
             </define>
             <run>
-                <!--<include name="loginP"/>-->
-                <!--<include name="settings"/>-->
-                <!--<include name="roles_permissions"/>-->
+                <include name="loginP"/>
+                <include name="settings"/>
+                <include name="roles_permissions"/>
                 <include name="pipeline"/>
             </run>
         </groups>
         <classes>
-            <!--<class name="pages.LoginPageTest"/>-->
-            <!--<class name="pages.admin.SettingsPageTest"/>-->
-            <!--<class name="pages.admin.RolesandPermissionTest"/>-->
+            <class name="pages.LoginPageTest"/>
+            <class name="pages.admin.SettingsPageTest"/>
+            <class name="pages.admin.RolesandPermissionTest"/>
             <class name="pages.projects.pipeline.PipelineListPageTest"/>
         </classes>
 
@@ -25,8 +25,8 @@
         <listener class-name="base.CustomTestListener"/>
     </listeners>
 
-    <parameter name="username" value="tesla.test.163"/>
-    <parameter name="password" value="P@$sw0rd!@"/>
+    <parameter name="username" value=""/>
+    <parameter name="password" value=""/>
     <parameter name="loginTitle" value="Razorthink AI"/>
     <parameter name="projectName" value="Chec"/>
     <parameter name="pipelineName" value="Test"/>

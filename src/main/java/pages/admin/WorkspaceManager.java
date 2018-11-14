@@ -2,6 +2,7 @@ package pages.admin;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 /**
@@ -12,7 +13,8 @@ import org.openqa.selenium.support.PageFactory;
 
 
 public class WorkspaceManager extends Users {
-
+    @FindBy(css = "button[class^='WorkspaceM']")
+    private WebElement clearAllIcon;
 
     public WorkspaceManager(String username, String password) {
         super(username, password);
@@ -20,8 +22,12 @@ public class WorkspaceManager extends Users {
     }
 
     public void selectUser(String useremail) {
+        String userName = getUserName(useremail);
+//        WebElement element = driver.findElement(By.xpath("//div[@title='" +userName + "']/parent::div//label[1]"));
+        By byPath = By.xpath("//div[@title='" + userName + "']/parent::div//label[1]");
+        WebElement userCheckbox = waitEx.waitElement(byPath, 5000);
+        userCheckbox.click();
 
-        WebElement element = driver.findElement(By.xpath("//div[@title='" + useremail + "']/parent::div//label[1]"));
 
     }
 

@@ -1,9 +1,8 @@
-package testPages.admin;
+package pages.admin;
 
 import base.BaseClass;
 import com.github.javafaker.Faker;
 import org.testng.annotations.*;
-import pages.admin.RoleAndPermissions;
 
 /**
  * author: habin,

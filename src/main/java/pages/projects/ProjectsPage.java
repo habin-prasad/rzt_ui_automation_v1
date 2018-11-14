@@ -48,6 +48,8 @@ public class ProjectsPage extends LeftPanel {
                 case "recipe":
                     clickOnModuleIcon(projectName, "data");
                     break;
+                default:
+                    log.error("Not Supported Module !!! " + module);
             }
         } else log.error("Multiple project with same name exists. Please provide unique name");
     }

@@ -1,9 +1,8 @@
-package testPages.admin;
+package pages.admin;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import pages.admin.WorkspaceManager;
 
 /**
  * @author: habin,

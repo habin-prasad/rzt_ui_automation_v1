@@ -1,10 +1,9 @@
-package testPages;
+package pages;
 
 import org.testng.annotations.AfterGroups;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import pages.LoginPage;
 import utils.Validations;
 
 /**

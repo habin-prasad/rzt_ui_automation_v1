@@ -1,6 +1,4 @@
-package testPages.admin;
-
-import pages.admin.LicenceAndUsage;
+package pages.admin;
 
 public class LicenceAndUsageTest extends LicenceAndUsage {
 }

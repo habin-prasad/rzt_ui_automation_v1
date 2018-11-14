@@ -1,5 +1,6 @@
 package testPages;
 
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -26,7 +27,11 @@ public class WorkspacePageTest {
         @Test(priority = 2, groups = {"workspace"})
         public void fileUploadTest()
         {
-            workspacePage.uploadFiles();
+            try {
+                workspacePage.uploadFiles();
+            } catch (AWTException e) {
+                e.printStackTrace();
+            }
         }
 
 

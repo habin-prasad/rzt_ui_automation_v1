@@ -7,6 +7,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.WaitEx;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+
 public class WorkspacePage extends LeftPanel{
     
     @FindBy(xpath = "//a[@href='/workspace']")
@@ -61,32 +65,32 @@ public class WorkspacePage extends LeftPanel{
 
 
     public void verifyTitle(String pageTitle) {
-
         testBase.verifyEquals(driver.getTitle(), pageTitle, driver);
     }
 
 
-    public void uploadFiles(){
-        uploadFiles.click(); //open upload
-        ChooseFileLink.sendKeys("/home/kajal/DataSets/PopulationEstimates.csv");
-        ChooseFileLink.sendKeys("/home/kajal/DataSets/fifa_ranking.csv");
+    public void uploadFiles() throws AWTException {
+        uploadFiles.click();
+        //ChooseFileLink.sendKeys("/home/kajal/DataSets/PopulationEstimates.csv");
+        //ChooseFileLink.sendKeys("/home/kajal/DataSets/fifa_ranking.csv");
+        ChooseFileLink.click();
+        StringSelection ss = new StringSelection("/home/kajal/DataSets/PopulationEstimates.csv");
+        //Copy the path of file in a clipboard
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
         ClickDone.click();
-        //ChooseFileLink.click();
-        //put path of file in a clipboard
-        //StringSelection ss = new StringSelection("\\home\\kajal\\DataSets\\PopulationEstimates.csv");
-        //Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
-        //Robot robot = new Robot();
-        //robot.keyPress(KeyEvent.VK_ENTER);
-        //robot.keyRelease(KeyEvent.VK_ENTER);
-        //robot.keyPress(KeyEvent.VK_CONTROL);
-        //robot.keyPress(KeyEvent.VK_V);
-        //robot.keyRelease(KeyEvent.VK_V);
-        //robot.keyRelease(KeyEvent.VK_CONTROL);
-        //robot.keyPress(KeyEvent.VK_ENTER);
-        //robot.keyRelease(KeyEvent.VK_ENTER);
     }
 
     public void downloadFilesFromMySpace(){
+
         downloadMyspaceFiles.click();
     }
 
@@ -104,7 +108,6 @@ public class WorkspacePage extends LeftPanel{
 
     public void copyFileFromCommunityToMyspace(){
         copyFromCommunityToMyspace.click();
-       
     }
 
     public void downloadFilesFromCommunity(){

@@ -29,7 +29,7 @@ public class ProjectsPage extends LeftPanel {
 
     private void clickOnModuleIcon(String projectName, String modulePath) {
         By byPath = By.xpath("//span[@title='" + projectName + "']/ancestor::div[4]//span[starts-with(@class,'flaticon-" + modulePath + "')]");
-        WebElement element = waitEx.waitElement(byPath, 5000);
+        WebElement element = waitEx.waitElement(byPath, 5);
         element.click();
     }
 

@@ -4,3 +4,4 @@ logs/
 TestScreenshots/
 *.iml
 ui_automation.iml
+*.log

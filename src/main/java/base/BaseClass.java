@@ -25,6 +25,7 @@ public abstract class BaseClass {
     public static final int WAIT_TIME_IN_SECS = 10;
     static final int WAIT_TIME_IN_MILLISECS = 10000;
     protected static boolean IS_ADMIN;
+    protected static String EMAIL;
     private static ReadProperties readProperties = new ReadProperties("/driver_config.properties");
     public static final String baseUrl = readProperties.getValue("qa");
     public WebDriver driver;
@@ -36,8 +37,7 @@ public abstract class BaseClass {
     protected TestBase testBase = new TestBase();
     protected ToastHandler toastHandler;
     protected JavascriptExecutor js;
-
-    protected static String EMAIL;
+    protected Validations validations;
 
     public static String getEMAIL() {
         return EMAIL;

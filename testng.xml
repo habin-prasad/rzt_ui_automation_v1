@@ -7,17 +7,19 @@
 
             </define>
             <run>
-                <include name="loginP"/>
-                <include name="settings"/>
-                <include name="roles_permissions"/>
-                <include name="pipeline"/>
+                <!--<include name="loginP"/>-->
+                <!--<include name="settings"/>-->
+                <!--<include name="roles_permissions"/>-->
+                <!--<include name="pipeline"/>-->
+                <include name="workspaceManager"/>
             </run>
         </groups>
         <classes>
-            <class name="pages.LoginPageTest"/>
-            <class name="pages.admin.SettingsPageTest"/>
-            <class name="pages.admin.RolesandPermissionTest"/>
-            <class name="pages.projects.pipeline.PipelineListPageTest"/>
+            <class name="pages.admin.WorspaceManagerTest"/>
+            <!--<class name="pages.LoginPageTest"/>-->
+            <!--<class name="pages.admin.SettingsPageTest"/>-->
+            <!--<class name="pages.admin.RolesandPermissionTest"/>-->
+            <!--<class name="pages.projects.pipeline.PipelineListPageTest"/>-->
         </classes>
 
     </test>
@@ -31,5 +33,6 @@
     <parameter name="projectName" value="Chec"/>
     <parameter name="pipelineName" value="Test"/>
     <parameter name="blockInstance" value="Test"/>
+    <parameter name="userEmail" value="17abhi89@gmail.com"/>
 
 </suite>

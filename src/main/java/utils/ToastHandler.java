@@ -18,6 +18,7 @@ import org.openqa.selenium.support.PageFactory;
 public class ToastHandler {
     protected static final Logger log = LogManager.getLogger(ToastHandler.class.getName());
     private WebDriver driver;
+
     @FindBy(xpath = "//div[@type='error']//span[contains(.,'OK')]")
     private WebElement errorToastOKButton;
 
@@ -41,14 +42,12 @@ public class ToastHandler {
     }
 
     public boolean isToastPresent(By by) {
-
         try {
             driver.findElements(by);
             return true;
         } catch (org.openqa.selenium.NoSuchElementException e) {
             return false;
         }
-
     }
 
     public void clickOkButton() {

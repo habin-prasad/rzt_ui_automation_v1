@@ -1,5 +1,6 @@
 package pages.admin;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -10,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
  * To change this template use File | Settings | File and Code Templates.
  */
 
-
+@Slf4j
 public class Users extends SettingsPage {
     private String logMessage1 = "Navigating to Users Tab";
     private String logMessage2 = "Searching for user tag with email: ";

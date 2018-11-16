@@ -1,5 +1,6 @@
 package pages.projects.pipeline;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.projects.CanvasPage;
@@ -9,12 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author: habin,
+ * author: habin,
  * created on: 13/11/18 : 5:35 PM
  * To change this template use File | Settings | File and Code Templates.
  */
 
-
+@Slf4j
 public class PipelineListPage extends CanvasPage {
 
     @FindBy(css = "div[class^='Editable']")

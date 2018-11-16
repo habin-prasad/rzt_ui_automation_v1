@@ -1,8 +1,10 @@
 package pages.admin;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+@Slf4j
 public class LicenceAndUsage {
 
     @FindBy(xpath = "//a[@href='/settings/license']")

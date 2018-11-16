@@ -1,5 +1,6 @@
 package pages.projects;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,12 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author: habin,
+ * author: habin,
  * created on: 26/09/18 : 5:37 PM
  * To change this template use File | Settings | File and Code Templates.
  */
 
-
+@Slf4j
 public class ProjectsPage extends LeftPanel {
 
     @FindBy(css = "div[class^='Project'] > span")

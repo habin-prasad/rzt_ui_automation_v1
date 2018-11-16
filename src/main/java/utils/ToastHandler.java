@@ -1,7 +1,6 @@
 package utils;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,9 +13,9 @@ import org.openqa.selenium.support.PageFactory;
  * To change this template use File | Settings | File and Code Templates.
  */
 
-
+@Slf4j
 public class ToastHandler {
-    protected static final Logger log = LogManager.getLogger(ToastHandler.class.getName());
+    //    protected static final Logger log = LogManager.getLogger(ToastHandler.class.getName());
     private WebDriver driver;
 
     @FindBy(xpath = "//div[@type='error']//span[contains(.,'OK')]")
@@ -28,16 +27,26 @@ public class ToastHandler {
     @FindBy(css = "button[title='Cancel']")
     private WebElement cancelConfirmationBoxButton;
 
+    @FindBy(xpath = "//div[@type='error']//span[contains(.,'OK')]")
+    private WebElement errorToast;
+
+    @FindBy(xpath = "//span[starts-with(@class,'flaticon-error')]/parent::*/span[starts-with(@class,'Text')]")
+    private WebElement toastMessage;
+
     public ToastHandler(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(this.driver, this);
     }
 
     public void acceptToast(String type) {
-        if (type.equalsIgnoreCase("error"))
+        if (type.equalsIgnoreCase("error")) {
+            log.info("Clicking on Error Toast Ok button.");
             errorToastOKButton.click();
+        }
         else if (type.equalsIgnoreCase("warning")) {
+            log.info("Clicking on Warning Toast Ok button.");
         } else if (type.equalsIgnoreCase("accept")) {
+            log.info("Clicking on Accept Toast Ok button.");
         }
     }
 
@@ -59,4 +68,17 @@ public class ToastHandler {
         log.info("Clicking on Confirmation Cancel button.");
         cancelConfirmationBoxButton.click();
     }
+
+    public boolean isErrorToastPresent() {
+        return errorToast.isDisplayed();
+    }
+
+    public String getErrorMessage() {
+        return toastMessage.getText();
+    }
+
+//    public void clickerrorOkButton() {
+//        log.info("Clicking on Error Toast Ok button.");
+//        errorToastOKButton.click();
+//    }
 }

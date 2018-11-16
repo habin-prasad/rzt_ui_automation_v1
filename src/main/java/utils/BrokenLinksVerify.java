@@ -1,7 +1,6 @@
 package utils;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,9 +16,9 @@ import java.util.List;
  * To change this template use File | Settings | File and Code Templates.
  */
 
-
+@Slf4j
 public class BrokenLinksVerify {
-    private static final Logger log = LogManager.getLogger(BrokenLinksVerify.class.getName());
+    //    private static final Logger log = LogManager.getLogger(BrokenLinksVerify.class.getName());
     private WebDriver driver;
 
     public BrokenLinksVerify(WebDriver driver) {

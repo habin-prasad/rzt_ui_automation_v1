@@ -27,4 +27,10 @@ public class WorspaceManagerTest {
         workspaceManager.clearUserWorkSpace(userEmail);
     }
 
+    @Test(priority = 702, groups = "workspaceManager")
+    @Parameters({"userEmail", "errorMessage1"})
+    public void validateErrorMessage(String userEmail, String errorMessage) {
+        workspaceManager.verifyErrorMessage(errorMessage, userEmail);
+    }
+
 }

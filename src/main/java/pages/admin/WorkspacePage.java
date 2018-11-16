@@ -1,7 +1,6 @@
 package pages.admin;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -11,8 +10,9 @@ import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 
+@Slf4j
 public class WorkspacePage extends LeftPanel{
-    
+
     @FindBy(xpath = "//a[@href='/workspace']")
     private WebElement workspace;
 
@@ -114,9 +114,9 @@ public class WorkspacePage extends LeftPanel{
         downloadFromCommunity.click();
     }
 
-     public void tearDown(){
+    public void tearDown() {
 
         driver.quit();
-     }
+    }
 }
 

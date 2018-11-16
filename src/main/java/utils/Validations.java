@@ -1,6 +1,7 @@
 package utils;
 
 import base.TestBase;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 
 import javax.mail.internet.AddressException;
@@ -12,7 +13,7 @@ import javax.mail.internet.InternetAddress;
  * To change this template use File | Settings | File and Code Templates.
  */
 
-
+@Slf4j
 public class Validations extends TestBase {
 
     public void validateTitle(String expected, String actual, WebDriver driver) {

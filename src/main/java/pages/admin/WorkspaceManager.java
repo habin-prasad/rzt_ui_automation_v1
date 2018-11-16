@@ -1,5 +1,6 @@
 package pages.admin;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,9 +14,10 @@ import utils.Validations;
  * To change this template use File | Settings | File and Code Templates.
  */
 
-
+@Slf4j
 public class WorkspaceManager extends Users {
     private String userName = "";
+    private String erroMessage;
 
     @FindBy(css = "button[class^='WorkspaceM']")
     private WebElement clearAllIcon;
@@ -29,7 +31,7 @@ public class WorkspaceManager extends Users {
     }
 
     private void selectUser(String useremail) {
-        boolean flag = true;
+        boolean flag;
         userName = getUserName(useremail);
         flag = isUserDisabled(useremail);
         log.info("User is disabled: " + flag);
@@ -62,6 +64,7 @@ public class WorkspaceManager extends Users {
         selectUser(useremail);
         clickClearIcon(userName);
         acceptWarning();
+
     }
 
     private void clickClearIcon(String user) {
@@ -70,4 +73,16 @@ public class WorkspaceManager extends Users {
         clearIcon.click();
     }
 
+    private void acceptToast() {
+        toastHandler.acceptToast("error");
+    }
+
+    public void verifyErrorMessage(String message, String email) {
+        clearUserWorkSpace(email);
+        if (toastHandler.isErrorToastPresent()) {
+            erroMessage = toastHandler.getErrorMessage();
+            acceptToast();
+        }
+        testBase.verifyEquals(erroMessage, message, driver);
+    }
 }

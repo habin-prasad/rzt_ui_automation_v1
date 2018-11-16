@@ -1,5 +1,6 @@
 package pages.projects;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import utils.WaitEx;
@@ -10,7 +11,7 @@ import utils.WaitEx;
  * To change this template use File | Settings | File and Code Templates.
  */
 
-
+@Slf4j
 public class CanvasPage extends ProjectsPage {
     public CanvasPage(String username, String password) {
         super(username, password);

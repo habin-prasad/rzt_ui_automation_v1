@@ -1,24 +1,22 @@
 package utils;
 
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.*;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.awt.*;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
 
 /**
- * @author: habin,
+ * author: habin,
  * created on: 25/09/18 : 6:02 PM
  * To change this template use File | Settings | File and Code Templates.
  */
 
-
+@Slf4j
 public class ExcelUtility {
     private static XSSFWorkbook ExcelWBook;
     private static XSSFSheet ExcelWSheet;

@@ -1,7 +1,6 @@
 package base;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.testng.IInvokedMethod;
 import org.testng.ITestResult;
 import org.testng.Reporter;
@@ -16,10 +15,10 @@ import java.util.concurrent.TimeUnit;
  * To change this template use File | Settings | File and Code Templates.
  */
 
-
+@Slf4j
 public class CustomTestListener extends TestListenerAdapter {
 
-    private static final Logger log = LogManager.getLogger(CustomTestListener.class.getName());
+//    private static final Logger log = LogManager.getLogger(CustomTestListener.class.getName());
 
     @Override
     public void afterInvocation(IInvokedMethod method, ITestResult testResult) {

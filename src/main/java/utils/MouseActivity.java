@@ -1,21 +1,21 @@
 package utils;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 /**
- * @author: habin,
+ * author: habin,
  * created on: 25/09/18 : 5:59 PM
  * To change this template use File | Settings | File and Code Templates.
  */
+
+@Slf4j
 public class MouseActivity {
     private WebDriver driver;
     private Actions actions;
-    private static final Logger log = LogManager.getLogger(MouseActivity.class.getName());
 
 
     public MouseActivity(WebDriver driver) {

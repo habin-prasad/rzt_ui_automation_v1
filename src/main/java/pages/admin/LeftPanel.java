@@ -1,6 +1,7 @@
 package pages.admin;
 
 import base.BaseClass;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -16,7 +17,7 @@ import java.util.List;
  * To change this template use File | Settings | File and Code Templates.
  */
 
-
+@Slf4j
 public class LeftPanel extends LoginPage {
 
     @FindBy(xpath = "//span[@title='Profile']/parent::span")

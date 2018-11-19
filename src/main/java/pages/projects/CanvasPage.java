@@ -1,6 +1,6 @@
 package pages.projects;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import utils.WaitEx;
@@ -11,7 +11,7 @@ import utils.WaitEx;
  * To change this template use File | Settings | File and Code Templates.
  */
 
-@Slf4j
+@Log4j2
 public class CanvasPage extends ProjectsPage {
     public CanvasPage(String username, String password) {
         super(username, password);
@@ -22,6 +22,7 @@ public class CanvasPage extends ProjectsPage {
         waitEx = new WaitEx(driver);
         By byPath = By.xpath("//span[contains(.,'" + instanceName + "')]/parent::div[starts-with(@class,'Block')]");
         WebElement element = waitEx.waitElement(byPath, 5);
+        element.getText();
     }
 
     protected void navigateToCanvas(String pipelineName) {

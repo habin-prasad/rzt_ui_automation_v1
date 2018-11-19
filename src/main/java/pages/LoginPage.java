@@ -1,7 +1,7 @@
 package pages;
 
 import base.BaseClass;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +15,7 @@ import utils.WaitEx;
  * created on: 25/09/18 : 5:56 PM
  * To change this template use File | Settings | File and Code Templates.
  */
-@Slf4j
+@Log4j2
 public class LoginPage extends BaseClass {
 
 
@@ -67,10 +67,6 @@ public class LoginPage extends BaseClass {
         }
         log.info("Password entered");
     }
-
-//    public String returnTitle() {
-//        return driver.getTitle();
-//    }
 
 
     @Override

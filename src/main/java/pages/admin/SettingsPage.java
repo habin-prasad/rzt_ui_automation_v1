@@ -1,6 +1,6 @@
 package pages.admin;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -11,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
  * To change this template use File | Settings | File and Code Templates.
  */
 
-@Slf4j
+@Log4j2
 public class SettingsPage extends LeftPanel {
 
 
@@ -36,7 +36,7 @@ public class SettingsPage extends LeftPanel {
     @FindBy(linkText = "Workspace Manager")
     private WebElement workspaceManagerTab;
 
-    @FindBy(linkText = "Open Requests")
+    @FindBy(xpath = "//a[@title='Open Requests']")
     private WebElement openRequestsTab;
 
     @FindBy(linkText = "Library Manager")

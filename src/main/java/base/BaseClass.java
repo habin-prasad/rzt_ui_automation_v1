@@ -1,7 +1,7 @@
 package base;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
  * created on: 25/09/18 : 5:47 PM
  * To change this template use File | Settings | File and Code Templates.
  */
-@Slf4j
+@Log4j2
 public abstract class BaseClass {
     public static final int WAIT_TIME_IN_SECS = 10;
     static final int WAIT_TIME_IN_MILLISECS = 10000;
@@ -29,7 +29,6 @@ public abstract class BaseClass {
     private static ReadProperties readProperties = new ReadProperties("/driver_config.properties");
     public static final String baseUrl = readProperties.getValue("qa");
     public WebDriver driver;
-    //    protected Logger log = LogManager.getLogger(BaseClass.class.getName());
     protected ExcelUtility excelUtility;
     protected MouseActivity mouseActivity;
     protected WaitEx waitEx;

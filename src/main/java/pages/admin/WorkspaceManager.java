@@ -1,6 +1,6 @@
 package pages.admin;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,7 +14,7 @@ import utils.Validations;
  * To change this template use File | Settings | File and Code Templates.
  */
 
-@Slf4j
+@Log4j2
 public class WorkspaceManager extends Users {
     private String userName = "";
     private String erroMessage;

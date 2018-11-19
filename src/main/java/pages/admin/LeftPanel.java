@@ -1,7 +1,7 @@
 package pages.admin;
 
 import base.BaseClass;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -17,7 +17,7 @@ import java.util.List;
  * To change this template use File | Settings | File and Code Templates.
  */
 
-@Slf4j
+@Log4j2
 public class LeftPanel extends LoginPage {
 
     @FindBy(xpath = "//span[@title='Profile']/parent::span")
@@ -69,7 +69,6 @@ public class LeftPanel extends LoginPage {
     }
 
     public void goSettingsPage() {
-        log.info("Navigating to Settings Page");
         try {
             Thread.sleep(5000);
             settingsIcon.click();

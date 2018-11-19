@@ -83,9 +83,15 @@ public class LeftPanel extends LoginPage {
 
     public boolean isAdmin() {
         clickProfileIcon();
-        String[] roles = rolesLabel.getAttribute("title").split(",");
-        List rolesList = Arrays.asList(roles);
-        boolean flag = rolesList.contains("Admin");
+        boolean flag = false;
+
+        try {
+            String[] roles = rolesLabel.getAttribute("title").split(",");
+            List rolesList = Arrays.asList(roles);
+            flag = rolesList.contains("Admin");
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
         testBase.verifyTrue(flag, driver);
         return flag;
     }

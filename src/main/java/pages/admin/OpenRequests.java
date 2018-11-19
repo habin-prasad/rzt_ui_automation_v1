@@ -28,7 +28,7 @@ public class OpenRequests extends Users {
     }
 
     private boolean verifyIfOpenRequestsPresent() {
-        return openRequestLists.size() != 0;
+        return !openRequestLists.isEmpty();
     }
 
     public final void acceptOpenRequest(String userEmail) {
@@ -44,7 +44,7 @@ public class OpenRequests extends Users {
     @NotNull
     @Contract(pure = true)
     private String getPath(String user, String icon) {
-        return "//div[contains(.,'" + user + "')]/parent::div//span[contains(@class,'" + icon + "')]";
+        return "//div[contains(text(),'" + user + "')]/parent::div//span[contains(@class,'" + icon + "')]";
     }
 
     private void respondToRequest(boolean b, String userName) {

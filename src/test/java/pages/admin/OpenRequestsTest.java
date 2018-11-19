@@ -1,5 +1,6 @@
 package pages.admin;
 
+import org.testng.annotations.AfterGroups;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -22,9 +23,21 @@ public class OpenRequestsTest {
         openRequests.clickOpenRequests();
     }
 
-    @Test(priority = 201)
-    @Parameters("userEmail2")
+    @Test(priority = 201, groups = "openRequest")
+    @Parameters({"userEmail2"})
     public void acceptUserRequest(String email) {
         openRequests.acceptOpenRequest(email);
+    }
+
+    @Test(priority = 202, groups = "openRequest")
+    @Parameters({"userEmail2"})
+    public void cancelUserRequest(String email) {
+        openRequests.cancelOpenRequest(email);
+    }
+
+
+    @AfterGroups(alwaysRun = true, groups = "openRequests")
+    public void tearDown() {
+        openRequests.tearDown();
     }
 }

@@ -35,10 +35,10 @@ public class SettingsPageTest {
         settingsPage.verifyAttribute("page");
     }
 
-    @AfterGroups(alwaysRun = true, groups = "dettings")
-    public void tearDown() {
-        settingsPage.driver.quit();
-    }
+//    @AfterGroups(alwaysRun = true, groups = "dettings")
+//    public void tearDown() {
+//        settingsPage.driver.quit();
+//    }
 
 
 }

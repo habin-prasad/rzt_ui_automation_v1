@@ -28,8 +28,7 @@
 
 
     <parameter name="username" value="rukhaiyabanu36@gmail.com"/>
-    <parameter name="username2" value="venkatesh.dharmapuri@razorthink.com"/>
-    <parameter name="password" value="re$toff56#"/>
+    <parameter name="password" value=""/>
     <parameter name="assign_role" value="Austin"/>
     <parameter name="loginTitle" value="Razorthink AI"/>
     <parameter name="projectName" value="Chec"/>

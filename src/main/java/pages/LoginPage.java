@@ -59,13 +59,17 @@ public class LoginPage extends BaseClass {
     private void enterPassword(String password) {
         userPassword.clear();
         userPassword.sendKeys(password);
-        try {
+        try{
             nextButton.click();
         } catch (Exception e) {
             userPassword.sendKeys(Keys.ENTER);
             log.error(e.getMessage());
         }
         log.info("Password entered");
+    }
+
+   public String returnTitle() {
+      return driver.getTitle();
     }
 
 
@@ -79,5 +83,12 @@ public class LoginPage extends BaseClass {
     public void verifyTitle(String pageTitle) {
 
         testBase.verifyEquals(driver.getTitle(), pageTitle, driver);
+    }
+
+
+    public String getMethodName()
+    {
+       String testcase = new Object(){}.getClass().getEnclosingMethod().getName();
+       return testcase;
     }
 }

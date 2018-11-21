@@ -25,7 +25,7 @@ public class WorkspacePage extends LeftPanel{
     @FindBy(xpath = "//div[@id='popupPortal']//span[.='Uploaded']")
     private WebElement Uploaded;
 
-    @FindBy(xpath = "//div[@id='popupPortal']/div/div/div[3]/button[2]")
+    @FindBy(xpath = "//button[contains(.,'Done')]")
     private WebElement ClickDone;
 
     //@FindBy(xpath = "//div[@class='WorkspaceChild__content___3Z7zR']//div[@name='tbody-rttable']//div/div[1]//button[@title='Download']")
@@ -65,7 +65,8 @@ public class WorkspacePage extends LeftPanel{
 
 
     public void verifyTitle(String pageTitle) {
-        testBase.verifyEquals(driver.getTitle(), pageTitle, driver);
+
+         testBase.verifyEquals(driver.getTitle(), pageTitle, driver);
     }
 
 

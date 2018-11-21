@@ -73,9 +73,11 @@ public class TestBase {
         try {
             log.info("Comparing actual value: " + actual + " with expected value: " + expected);
             assertEquals(actual, expected);
+
         } catch (Throwable throwable) {
             log.error("FAILED comparing actual value: " + actual + " with expected value: " + expected);
             addVerificationFailure(throwable);
+
         }
     }
 

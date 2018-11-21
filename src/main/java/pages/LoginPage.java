@@ -68,9 +68,9 @@ public class LoginPage extends BaseClass {
         log.info("Password entered");
     }
 
-//    public String returnTitle() {
-//        return driver.getTitle();
-//    }
+   public String returnTitle() {
+      return driver.getTitle();
+    }
 
 
     @Override
@@ -83,5 +83,12 @@ public class LoginPage extends BaseClass {
     public void verifyTitle(String pageTitle) {
 
         testBase.verifyEquals(driver.getTitle(), pageTitle, driver);
+    }
+
+
+    public String getMethodName()
+    {
+       String testcase = new Object(){}.getClass().getEnclosingMethod().getName();
+       return testcase;
     }
 }

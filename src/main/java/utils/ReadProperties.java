@@ -1,7 +1,6 @@
 package utils;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,9 +15,8 @@ import static java.lang.Integer.parseInt;
  * To change this template use File | Settings | File and Code Templates.
  */
 
-
+@Slf4j
 public class ReadProperties {
-    private static final Logger log = LogManager.getLogger(ReadProperties.class.getName());
     private final Properties properties = new Properties();
 
     public ReadProperties(String resourceName) {

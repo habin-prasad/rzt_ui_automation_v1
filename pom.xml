@@ -68,14 +68,12 @@
     </build>
 
     <dependencies>
-
         <!-- https://mvnrepository.com/artifact/com.relevantcodes/extentreports -->
         <dependency>
             <groupId>com.relevantcodes</groupId>
             <artifactId>extentreports</artifactId>
             <version>2.41.0</version>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/org.apache.maven.surefire/surefire -->
         <dependency>
             <groupId>org.apache.maven.surefire</groupId>
@@ -113,14 +111,13 @@
             <artifactId>selenium-ie-driver</artifactId>
             <version>${selenium.version}</version>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/org.apache.directory.studio/org.apache.commons.io -->
         <dependency>
             <groupId>org.apache.directory.studio</groupId>
             <artifactId>org.apache.commons.io</artifactId>
             <version>2.4</version>
         </dependency>
-
+        <!--This dependency is for logging-->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
@@ -155,20 +152,30 @@
             <artifactId>webdrivermanager</artifactId>
             <version>3.0.0</version>
         </dependency>
-        <!--<dependency>-->
-        <!--<groupId>io.github.bonigarcia</groupId>-->
-        <!--<artifactId>webdrivermanager</artifactId>-->
-        <!--<version>3.0.0</version>-->
-        <!--<scope>compile</scope>-->
-        <!--</dependency>-->
+        <!--This dependency is for email validations-->
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/net.sourceforge.jexcelapi/jxl -->
         <dependency>
             <groupId>net.sourceforge.jexcelapi</groupId>
             <artifactId>jxl</artifactId>
             <version>2.6.12</version>
         </dependency>
-
-
     </dependencies>
 
 </project>

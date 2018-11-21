@@ -1,9 +1,11 @@
 package pages.admin;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LicenceAndUsage {
+@Log4j2
+class LicenceAndUsage {
 
     @FindBy(xpath = "//a[@href='/settings/license']")
     private WebElement clickLicenseandUsage;

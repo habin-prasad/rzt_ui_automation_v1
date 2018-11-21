@@ -1,8 +1,7 @@
 package base;
 
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -19,9 +18,9 @@ import java.util.Map;
  * To change this template use File | Settings | File and Code Templates.
  */
 
+@Log4j2
 
 public class TestBase {
-    protected static final Logger log = LogManager.getLogger(TestBase.class.getName());
     private static Map verificationFailureMap = new HashMap();
     private WebDriver driver;
 

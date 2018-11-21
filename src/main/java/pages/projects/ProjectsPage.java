@@ -1,5 +1,6 @@
 package pages.projects;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,12 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author: habin,
+ * author: habin,
  * created on: 26/09/18 : 5:37 PM
  * To change this template use File | Settings | File and Code Templates.
  */
 
-
+@Log4j2
 public class ProjectsPage extends LeftPanel {
 
     @FindBy(css = "div[class^='Project'] > span")
@@ -29,7 +30,7 @@ public class ProjectsPage extends LeftPanel {
 
     private void clickOnModuleIcon(String projectName, String modulePath) {
         By byPath = By.xpath("//span[@title='" + projectName + "']/ancestor::div[4]//span[starts-with(@class,'flaticon-" + modulePath + "')]");
-        WebElement element = waitEx.waitElement(byPath, 5000);
+        WebElement element = waitEx.waitElement(byPath, 5);
         element.click();
     }
 

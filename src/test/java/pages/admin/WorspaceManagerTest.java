@@ -5,7 +5,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 /**
- * @author: habin,
+ * author: habin,
  * created on: 30/10/18 : 6:05 PM
  * To change this template use File | Settings | File and Code Templates.
  */
@@ -21,10 +21,16 @@ public class WorspaceManagerTest {
         workspaceManager.clickWorkspaceManagerTab();
     }
 
-    @Test
+    @Test(priority = 701, groups = "workspaceManager")
     @Parameters("userEmail")
-    public void checkUserExists() {
+    public void clearUserWorkspace(String userEmail) {
+        workspaceManager.clearUserWorkSpace(userEmail);
+    }
 
+    @Test(priority = 702, groups = "workspaceManager")
+    @Parameters({"userEmail", "errorMessage1"})
+    public void validateErrorMessage(String userEmail, String errorMessage) {
+        workspaceManager.verifyErrorMessage(errorMessage, userEmail);
     }
 
 }

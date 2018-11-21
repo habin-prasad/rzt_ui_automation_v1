@@ -1,5 +1,6 @@
 package pages.admin;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -15,7 +16,7 @@ import java.util.List;
  * To change this template use File | Settings | File and Code Templates.
  */
 
-
+@Log4j2
 public class RoleAndPermissions extends SettingsPage {
 
     private final int SLEEP_TIME = 5000;
@@ -182,7 +183,7 @@ public class RoleAndPermissions extends SettingsPage {
                 try {
                     title = element.getAttribute("title");
                 } catch (StaleElementReferenceException e) {
-
+                    log.error(e.getMessage());
                 }
                 attempts++;
             }
@@ -218,7 +219,6 @@ public class RoleAndPermissions extends SettingsPage {
         waiter();
         editName(roleLabel, newLabel);
         refreshPage();
-//        editDescription(newLabel, description);
         log.info("Updated the Role.");
     }
 

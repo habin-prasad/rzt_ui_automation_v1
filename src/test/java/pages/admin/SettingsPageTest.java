@@ -1,6 +1,7 @@
 package pages.admin;
 
-import org.testng.annotations.AfterGroups;
+import base.BaseClass;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -35,9 +36,9 @@ public class SettingsPageTest {
         settingsPage.verifyAttribute("page");
     }
 
-    @AfterGroups(alwaysRun = true, groups = "settings")
+    @AfterClass(alwaysRun = true, groups = "settings")
     public void tearDown() {
-        settingsPage.driver.quit();
+        BaseClass.driver.quit();
     }
 
 

@@ -1,6 +1,7 @@
 package pages;
 
-import org.testng.annotations.AfterGroups;
+import base.BaseClass;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -38,10 +39,10 @@ public class LoginPageTest {
 //        validations.validateTitle(title, loginPage.returnTitle(), loginPage.driver);
     }
 
-    @AfterGroups(alwaysRun = true, groups = {"loginP"})
+    @AfterClass(alwaysRun = true, groups = {"loginP"})
     public void tearDown() {
 
-        loginPage.driver.quit();
+        BaseClass.driver.quit();
     }
 
 }

@@ -1,6 +1,6 @@
 package pages.admin;
 
-import org.testng.annotations.AfterGroups;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -36,7 +36,7 @@ public class OpenRequestsTest {
     }
 
 
-    @AfterGroups(alwaysRun = true, groups = "openRequests")
+    @AfterClass(alwaysRun = true, groups = "openRequests")
     public void tearDown() {
         openRequests.tearDown();
     }

@@ -78,7 +78,7 @@ public class RolesandPermissionTest {
         roleAndPermissions.updateRole(roleName, "Updated_" + roleName, faker.name().fullName());
     }
 
-    @AfterGroups(groups = "roles_permissions", alwaysRun = true)
+    @AfterClass(groups = "roles_permissions", alwaysRun = true)
     public void tearDown() {
         roleAndPermissions.logout();
         roleAndPermissions.tearDown();

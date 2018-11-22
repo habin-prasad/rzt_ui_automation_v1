@@ -28,7 +28,7 @@ public abstract class BaseClass {
     protected static String EMAIL;
     private static ReadProperties readProperties = new ReadProperties("/driver_config.properties");
     public static final String baseUrl = readProperties.getValue("qa");
-    public WebDriver driver;
+    public static WebDriver driver;
     protected ExcelUtility excelUtility;
     protected MouseActivity mouseActivity;
     protected WaitEx waitEx;
@@ -55,9 +55,9 @@ public abstract class BaseClass {
     }
 
     public void setUp() {
-        this.driver = selectBrowser();
-        this.driver = implicitDriverWait(WAIT_TIME_IN_SECS);
-        this.driver = maximizeWindow();
+        driver = selectBrowser();
+        driver = implicitDriverWait(WAIT_TIME_IN_SECS);
+        driver = maximizeWindow();
         driver.get(baseUrl);
 
     }
@@ -79,13 +79,13 @@ public abstract class BaseClass {
     }
 
     private WebDriver maximizeWindow() {
-        this.driver.manage().window().fullscreen();
-        return this.driver;
+        driver.manage().window().fullscreen();
+        return driver;
     }
 
     protected WebDriver implicitDriverWait(int timeInSeconds) {
-        this.driver.manage().timeouts().implicitlyWait(timeInSeconds, TimeUnit.SECONDS);
-        return this.driver;
+        driver.manage().timeouts().implicitlyWait(timeInSeconds, TimeUnit.SECONDS);
+        return driver;
     }
 
 
@@ -94,11 +94,11 @@ public abstract class BaseClass {
     }
 
     public WebDriver getDriver() {
-        return this.driver;
+        return driver;
     }
 
     public void setDriver(WebDriver driver) {
-        this.driver = driver;
+        BaseClass.driver = driver;
     }
 
     public WebElement waitForLoader(WebDriver driver, By element) {

@@ -13,7 +13,7 @@
         <testng.version>6.14.3</testng.version>
         <surefire.version>2.19.1</surefire.version>
         <log4j.version>2.11.1</log4j.version>
-        <poi.version>3.17</poi.version>
+        <poi.version>4.1.1</poi.version>
         <java.version>1.8</java.version>
 
     </properties>
